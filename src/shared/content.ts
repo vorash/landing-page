@@ -269,8 +269,96 @@ export const PROBE = {
     { title: "Missing evidence is reported.", text: "Gaps become published coverage gaps, never filled-in guesses." },
   ],
   finding:
-    "Both model arms made the unsafe error Probe exists to prevent. The claims policy absorbed it: zero unsafe recommendations.",
-  command: "vora probe replay test/fixtures/oom/oom-positive",
+    "An evidenced memory-limit kill is identified. A leak is refused because the sawtooth series does not show sustained growth.",
+  command: "go run ./cmd/vora-probe replay test/fixtures/oom/oom-positive --out .probe",
+};
+
+// Sources: vora-probe/README.md, docs/architecture.md, docs/claims-policy.md,
+// test/fixtures/oom/README.md and cmd/vora-probe/main.go. Keep demo labels
+// descriptive rather than fabricating an investigation's literal output.
+export const PROBE_PAGE = {
+  eyebrow: "Read-only infrastructure investigation · built on Vora",
+  headline: ["Find the cause.", "Or say you can't."],
+  intro: "Probe investigates a service without changing it. It gathers bounded evidence, tests competing explanations and publishes what it can support — including what it couldn't establish.",
+  traits: ["Open source", "MIT", "Go 1.25+", "No third-party dependencies"],
+  illustration: {
+    evidence: ["memory-limit kill", "working set / sawtooth", "sustained growth"],
+    admitted: "Memory-limit termination",
+    refused: "Memory leak",
+    admittedNote: "supported by retained evidence",
+    refusedNote: "growth across restarts not shown",
+    caption: "An illustration of the OOM fixture",
+  },
+  caseIntro: "Frozen OOM fixtures pin what Probe can conclude and what it must refuse. Pick a case to inspect the boundary.",
+  cases: [
+    {
+      id: "oom-positive",
+      label: "01 / memory limit",
+      title: "A kill is not a leak.",
+      observation: "A memory-limit kill is evidenced. The working set has a sawtooth shape.",
+      allowed: "The container was killed at its memory limit.",
+      refused: "The application leaks memory.",
+      why: "A kill at the limit does not establish sustained growth across restarts.",
+    },
+    {
+      id: "misleading-deployment-correlation",
+      label: "02 / rollout",
+      title: "Timing is not a mechanism.",
+      observation: "A rollout lands near the impact. Memory is flat; query volume is unchanged.",
+      allowed: "The cause is not established by the retained evidence.",
+      refused: "The rollout caused the impact.",
+      why: "A nearby deployment without evidence of a changed mechanism is correlation, not causation.",
+    },
+    {
+      id: "missing-telemetry",
+      label: "03 / coverage gap",
+      title: "Missing data stays missing.",
+      observation: "Restarts are visible. The terminating cause and required telemetry are not.",
+      allowed: "Restarts occurred; the terminating cause is unknown.",
+      refused: "A specific cause of the restarts.",
+      why: "Unavailable or truncated responses become visible coverage gaps in the report.",
+    },
+    {
+      id: "non-oom-restart",
+      label: "04 / probe failure",
+      title: "A restart is not an OOM.",
+      observation: "A probe-driven restart occurs with memory far below its limit.",
+      allowed: "The restart is not memory-driven.",
+      refused: "The container ran out of memory.",
+      why: "A probe failure and restart do not prove memory exhaustion.",
+    },
+  ],
+  setup: ["git clone https://github.com/vorash/vora-probe.git", "cd vora-probe"],
+  replay: "go run ./cmd/vora-probe replay test/fixtures/oom/oom-positive --out .probe",
+  artifacts: ["RUN-…/report.md", "RUN-…/report.json", "RUN-…/RUN-….journal.jsonl"],
+  layers: [
+    { number: "01", title: "Only named requests", detail: "The gateway validates an action and metric against closed allowlists, with bounded evidence windows." },
+    { number: "02", title: "Only in scope", detail: "Policy checks entity scope and an explicit deny list before an infrastructure request runs." },
+    { number: "03", title: "Only supported claims", detail: "After the model, the claims policy narrows unsupported assertions and shows both the refusal and what the evidence does support." },
+  ],
+  method: {
+    intro: "The trusted controller holds credentials, the network, the model and the journal. The untrusted worker gets no network or credentials; each invocation makes one deterministic step.",
+    controller: {
+      title: ["Owns the keys.", "Checks every request."],
+      text: "Authorizes bounded infrastructure calls, runs the model and journals requests before execution.",
+      meta: "network · credentials · model · store",
+    },
+    worker: {
+      title: ["One step.", "No side doors."],
+      text: "Reads a bounded state envelope and one pending result; returns a request or a final report.",
+      meta: "no network · no credentials",
+    },
+    note: "Replay runs the worker in-process. A configured live run executes the same worker through Vora's public sandbox API. Neither path gives the investigator a mutation tool.",
+  },
+  tryIntro: "The recorded path needs no cluster, credentials or model endpoint. Clone the repository, then run the full investigation against a frozen fixture.",
+  tryAside: "An evidence-linked Markdown and JSON report, plus an append-only journal. Refused claims appear beside their narrowed, supported form.",
+  requirement: "Go 1.25+",
+  status: "Pre-1.0",
+  limits: [
+    "The offline replay runs against authored fixtures, not live production incidents. Live investigation needs operator-supplied Vora, Kubernetes, Prometheus and a model endpoint. The library is tagged v0.x; its public surface is intended to be stable but is not yet frozen.",
+    "Evaluator comparisons report counts and spreads, not statistical significance. An unconfigured model arm is marked blocked, never silently replaced. Recommendations are proposals; Probe does not execute remediation.",
+  ],
+  closing: ["The report should know", "what it doesn't know."],
 };
 
 export const FAQ = [

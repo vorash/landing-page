@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
-import { flushSync } from "react-dom";
 import { MarkPrism } from "../shared/logos";
 import { highlight } from "../shared/highlight";
 import { useCopy, useInView, useReducedMotion, useReveal, useTypewriter } from "../shared/hooks";
+import { useTheme, type Theme } from "../shared/theme";
 import {
   AGENT_PROMPT, ATTACKS, AUDIT_LOG, BENCH, CODE, CODE_TABS, FAQ, LIMITS, LINKS,
   PROBE, STATS, STATUS, USE_CASES,
@@ -14,45 +14,6 @@ import "./fonts.css";
 import "./cleanroom.css";
 
 const WORKS = ["Claude Code (MCP)", "Cursor (MCP)", "OpenAI Agents SDK", "TypeScript", "Python", "any Linux box"];
-
-type Theme = "day" | "night";
-const THEME_KEY = "vora-cr-theme";
-
-function initialTheme(): Theme {
-  const saved = localStorage.getItem(THEME_KEY);
-  if (saved === "day" || saved === "night") return saved;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
-}
-
-// Switches theme with a circular reveal from the pointer where the View
-// Transitions API exists; otherwise the CSS colour transition does the work.
-function useTheme(reduced: boolean) {
-  const [theme, setTheme] = useState<Theme>(initialTheme);
-
-  useEffect(() => {
-    localStorage.setItem(THEME_KEY, theme);
-  }, [theme]);
-
-  const toggle = (origin?: { x: number; y: number }) => {
-    const next: Theme = theme === "day" ? "night" : "day";
-    const apply = () => flushSync(() => setTheme(next));
-    const doc = document as Document & {
-      startViewTransition?: (cb: () => void) => { ready: Promise<void> };
-    };
-    if (!doc.startViewTransition || reduced) return apply();
-    const x = origin?.x ?? window.innerWidth - 80;
-    const y = origin?.y ?? 32;
-    const r = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
-    doc.startViewTransition(apply).ready.then(() => {
-      document.documentElement.animate(
-        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] },
-        { duration: 700, easing: "cubic-bezier(0.2, 0.7, 0.2, 1)", pseudoElement: "::view-transition-new(root)" },
-      );
-    });
-  };
-
-  return { theme, toggle };
-}
 
 export default function CleanRoom() {
   const reduced = useReducedMotion();
@@ -116,7 +77,7 @@ function Nav({ theme, onToggle }: { theme: Theme; onToggle: (o?: { x: number; y:
           <a href="#instruments">Product</a>
           <a href="#airlock">Security</a>
           <a href="#build">Build</a>
-          <a href="#probe">Probe</a>
+          <a href="/probe/">Probe</a>
           <a href={LINKS.github}>GitHub</a>
         </div>
         <div className="cr-nav__right">
@@ -762,12 +723,10 @@ function ProbeSection() {
             ))}
           </ul>
           <div className="cr-probe__foot">
-            <blockquote className="cr-probe__quote">
-              <p>“{PROBE.finding}”</p>
-            </blockquote>
+            <p className="cr-probe__quote">{PROBE.finding}</p>
             <div className="cr-probe__run">
               <pre>{highlight(`$ ${PROBE.command}`)}</pre>
-              <a className="cr-tlink" href={LINKS.probe}>
+              <a className="cr-tlink" href="/probe/">
                 Explore Probe <Arrow />
               </a>
             </div>
@@ -908,7 +867,7 @@ function Footer() {
           <a href={LINKS.threatModel}>Threat model</a>
           <a href={LINKS.adrs}>ADRs</a>
           <a href={LINKS.examples}>Examples</a>
-          <a href={LINKS.probe}>Probe</a>
+          <a href="/probe/">Probe</a>
           <a href="/llms.txt">llms.txt</a>
         </nav>
         <p className="cr-foot__legal">MIT · © {new Date().getFullYear()} Vora</p>

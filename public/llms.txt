@@ -29,3 +29,4 @@
 - Source: https://github.com/vorash/vora
 - Threat model: https://github.com/vorash/vora/blob/main/docs/architecture/threat-model.md
 - Probe: https://github.com/vorash/vora-probe
+- Probe page: https://vora.sh/probe/

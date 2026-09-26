@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vora Probe — Read-only infrastructure investigation</title>
+    <meta name="description" content="Vora Probe investigates infrastructure read-only, connects claims to evidence and refuses conclusions the evidence cannot support. Explore the offline replay and the claims policy." />
+    <meta name="theme-color" content="#f6f6f3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0b0f" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("vora-cr-theme");
+          if (t !== "day" && t !== "night") t = matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
+          document.documentElement.style.background = t === "night" ? "#0a0b0f" : "#f6f6f3";
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/vora-logo-trans.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/assets/56c1b48946cb3dda8fe48e817c7791c546b7dd92.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vora.sh/probe/" />
+    <meta property="og:title" content="Vora Probe — Find the cause. Or say you can't." />
+    <meta property="og:description" content="Read-only infrastructure investigation with inspectable evidence and a claims policy that refuses unsupported conclusions." />
+    <meta property="og:image" content="https://vora.sh/assets/56c1b48946cb3dda8fe48e817c7791c546b7dd92.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="robots" content="index, follow" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/probe/main.tsx"></script>
+  </body>
+</html>
