@@ -325,7 +325,7 @@
 .cr .cr-logo {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 6px;
   color: var(--ink);
   font-weight: 600;
   font-size: 22px;
@@ -431,7 +431,7 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 6px;
   padding: 7px 13px 7px 9px;
   border-radius: 999px;
   background: var(--surface);
@@ -1903,7 +1903,7 @@
 .cr .cr-v-bud {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 6px;
 }
 
 .cr .cr-v-bud__row {
