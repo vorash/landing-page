@@ -1,0 +1,31 @@
+# Vora
+
+> Vora runs untrusted code — AI agents, generated scripts, untrusted PRs, user plugins — in isolated Linux sandboxes, and keeps a record of what it did. Open source (MIT), written in Go, no Kubernetes in the path. Status: v0.7, proof of concept, not independently audited.
+
+## What it does
+
+- Isolation: Bubblewrap (namespaces + cgroup v2 + seccomp) or gVisor (user-space kernel), chosen per sandbox. Read-only rootfs; only /workspace, /root and /tmp are writable.
+- Network: default-deny. Modes: none (default), restricted (SNI egress gateway + allowlist-only DNS), full, private. Metadata, loopback and private ranges are blocked.
+- Secretless credentials: tokens are stored encrypted in the control plane and attached upstream by the gateway; they never enter the sandbox.
+- Audit trail: lifecycle events, every exec, every allowed/denied egress decision (JSONL or Postgres), OpenTelemetry traces, Prometheus metrics.
+- Snapshot & fork: capture a running sandbox and fork independent copies for parallel agents.
+- Agent identity: spiffe://vora.sh/tenant/<t>/agent/<a>, agent-bound API keys, attribution on every audit record.
+- Budgets: memory, CPU, PIDs, disk, TTL, with semantic termination reasons (OOMKilled, PidsLimitExceeded, TimeoutExceeded).
+
+## Interfaces
+
+- CLI: `vora sandbox create --image vora/python --memory 512m --cpu 1 --pids 128 --network none`
+- TypeScript SDK: `@vorash/sdk` (zero runtime dependencies)
+- Python SDK: `vorash` (import `vora`)
+- MCP server: `@vorash/mcp` — tools sandbox_create, sandbox_exec, sandbox_read_file, sandbox_write_file, sandbox_stats, sandbox_destroy
+- OpenAI Agents adapter: `@vorash/openai-agents`
+
+## Built on Vora
+
+- Vora Probe: a read-only incident investigator whose untrusted worker runs inside a Vora sandbox with no network and no credentials, and whose claims policy refuses conclusions the evidence does not support.
+
+## Links
+
+- Source: https://github.com/vorash/vora
+- Threat model: https://github.com/vorash/vora/blob/main/docs/architecture/threat-model.md
+- Probe: https://github.com/vorash/vora-probe

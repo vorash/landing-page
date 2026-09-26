@@ -1,20 +1,66 @@
-import { Hero } from './components/Hero';
-import { Features } from './components/Features';
-import { Technology } from './components/Technology';
-import { CTA } from './components/CTA';
-import { Navigation } from './components/Navigation';
-import { Footer } from './components/Footer';
+import { Suspense, lazy, useEffect, useMemo, useState, type ComponentType } from "react";
+import { Switcher, VARIANTS, type VariantKey } from "./shared/Switcher";
+
+// Globbed so a variant that is still being built doesn't break the others.
+const modules = import.meta.glob<{ default: ComponentType }>([
+  "./variants/horizon/Horizon.tsx",
+  "./variants/containment/Containment.tsx",
+  "./variants/cleanroom/CleanRoom.tsx",
+  "./brand/Brand.tsx",
+]);
+
+const PATHS: Record<VariantKey, string> = {
+  horizon: "./variants/horizon/Horizon.tsx",
+  containment: "./variants/containment/Containment.tsx",
+  cleanroom: "./variants/cleanroom/CleanRoom.tsx",
+  brand: "./brand/Brand.tsx",
+};
+
+// In-page anchors (#fall, #code, …) share the hash with variant routing, so
+// only a hash that names a variant switches pages; anything else is left to
+// the browser's normal anchor scrolling.
+function variantFromHash(): VariantKey | null {
+  const key = window.location.hash.replace(/^#\/?/, "");
+  return VARIANTS.find((v) => v.key === key)?.key ?? null;
+}
+
+function readHash(): VariantKey {
+  return variantFromHash() ?? "horizon";
+}
+
+function Missing() {
+  return <div className="app-loading app-missing">This variant is still being built.</div>;
+}
 
 export default function App() {
+  const [variant, setVariant] = useState<VariantKey>(readHash);
+
+  useEffect(() => {
+    const onHash = () => {
+      const next = variantFromHash();
+      if (!next) return;
+      setVariant(next);
+      window.scrollTo({ top: 0 });
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.variant = variant;
+  }, [variant]);
+
+  const Page = useMemo(() => {
+    const load = modules[PATHS[variant]];
+    return load ? lazy(load) : Missing;
+  }, [variant]);
+
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white">
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-500/10 via-transparent to-transparent pointer-events-none" />
-      <Navigation />
-      <Hero />
-      <Features />
-      <Technology />
-      <CTA />
-      <Footer />
-    </div>
+    <>
+      <Suspense fallback={<div className="app-loading" />}>
+        <Page />
+      </Suspense>
+      <Switcher current={variant} />
+    </>
   );
 }
