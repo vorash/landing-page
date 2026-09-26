@@ -1,42 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vora — A clean room for dirty code.</title>
+    <meta name="title" content="Vora — A clean room for dirty code." />
+    <meta name="description" content="Vora is an open-source runtime that runs AI agents, generated scripts and untrusted PRs in isolated Linux sandboxes — default-deny networking, credentials the agent never sees, and a record of every exec and every network decision. One Go binary. No Kubernetes." />
 
-      <!-- Primary Meta Tags -->
-      <title>Vora - From local terminal to global edge in seconds.</title>
-      <meta name="title" content="Vora - From local terminal to global edge in seconds." />
-      <meta name="description" content="Vora.sh is a high-performance edge infrastructure platform built for the modern developer. We replace complex cloud configuration with a single command, allowing engineers to deploy intelligent automation, serverless workers, and distributed databases to over 30 global regions instantly." />
+    <meta name="theme-color" content="#f6f6f3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0b0f" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
 
-      <!-- Favicon -->
-      <link rel="icon" type="image/x-icon" href="/vora-logo-trans.ico" />
-      <link rel="apple-touch-icon" href="/assets/56c1b48946cb3dda8fe48e817c7791c546b7dd92.png" />
+    <!-- Paint the saved theme's background before React mounts, so night
+         visitors don't get a white flash. Keep the key in sync with CleanRoom.tsx. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("vora-cr-theme");
+          if (t !== "day" && t !== "night") t = matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
+          document.documentElement.style.background = t === "night" ? "#0a0b0f" : "#f6f6f3";
+        } catch (e) {}
+      })();
+    </script>
 
-      <!-- Open Graph / Facebook -->
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://vora.sh/" />
-      <meta property="og:title" content="Vora - From local terminal to global edge in seconds." />
-      <meta property="og:description" content="Vora.sh is a high-performance edge infrastructure platform built for the modern developer. We replace complex cloud configuration with a single command, allowing engineers to deploy intelligent automation, serverless workers, and distributed databases to over 30 global regions instantly." />
-      <meta property="og:image" content="https://vora.sh/assets/56c1b48946cb3dda8fe48e817c7791c546b7dd92.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/vora-logo-trans.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/assets/56c1b48946cb3dda8fe48e817c7791c546b7dd92.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable summary" />
 
-      <!-- Twitter -->
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="https://vora.sh/" />
-      <meta property="twitter:title" content="Vora - From local terminal to global edge in seconds." />
-      <meta property="twitter:description" content="Vora.sh is a high-performance edge infrastructure platform built for the modern developer. We replace complex cloud configuration with a single command, allowing engineers to deploy intelligent automation, serverless workers, and distributed databases to over 30 global regions instantly." />
-      <meta property="twitter:image" content="https://vora.sh/assets/56c1b48946cb3dda8fe48e817c7791c546b7dd92.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vora.sh/" />
+    <meta property="og:title" content="Vora — A clean room for dirty code." />
+    <meta property="og:description" content="Isolated Linux sandboxes for AI agents and untrusted code. Default-deny network, secretless credentials, a record of every exec." />
+    <meta property="og:image" content="https://vora.sh/assets/56c1b48946cb3dda8fe48e817c7791c546b7dd92.png" />
 
-      <!-- Additional SEO -->
-      <meta name="keywords" content="edge computing, serverless, cloud deployment, infrastructure, developer tools, global edge network" />
-      <meta name="robots" content="index, follow" />
-      <meta name="language" content="English" />
-      <meta name="author" content="Vora" />
-    </head>
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://vora.sh/" />
+    <meta property="twitter:title" content="Vora — A clean room for dirty code." />
+    <meta property="twitter:description" content="Isolated Linux sandboxes for AI agents and untrusted code. Default-deny network, secretless credentials, a record of every exec." />
+    <meta property="twitter:image" content="https://vora.sh/assets/56c1b48946cb3dda8fe48e817c7791c546b7dd92.png" />
 
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
+    <meta name="keywords" content="AI agent sandbox, untrusted code execution, gVisor, bubblewrap, MCP, code interpreter, agent security, audit trail" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Vora" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
