@@ -1,6 +1,6 @@
 /* ─────────────────────────────────────────────────────────────
-   Vora · Variant C · CLEAN ROOM
-   Every selector is scoped under .cr — other variants load globally.
+   Vora · CLEAN ROOM — day and night themes.
+   Every selector is scoped under .cr.
    ───────────────────────────────────────────────────────────── */
 
 @property --cr-ang {

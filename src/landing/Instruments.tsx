@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useInView } from "../../shared/hooks";
-import { AUDIT_LOG, PILLARS } from "../../shared/content";
+import { useInView } from "../shared/hooks";
+import { AUDIT_LOG, PILLARS } from "../shared/content";
 import { SecHead } from "./parts";
 
 const MCP_TOOLS = [

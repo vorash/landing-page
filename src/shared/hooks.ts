@@ -1,16 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-export function useFonts(href: string) {
-  useEffect(() => {
-    if (document.querySelector(`link[data-font="${href}"]`)) return;
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = href;
-    link.dataset.font = href;
-    document.head.appendChild(link);
-  }, [href]);
-}
-
 export function useReducedMotion() {
   const [reduced, setReduced] = useState(
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,

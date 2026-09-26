@@ -1,19 +1,17 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { flushSync } from "react-dom";
-import { MarkPrism } from "../../shared/logos";
-import { highlight } from "../../shared/highlight";
-import { useCopy, useFonts, useInView, useReducedMotion, useReveal, useTypewriter } from "../../shared/hooks";
+import { MarkPrism } from "../shared/logos";
+import { highlight } from "../shared/highlight";
+import { useCopy, useInView, useReducedMotion, useReveal, useTypewriter } from "../shared/hooks";
 import {
   AGENT_PROMPT, ATTACKS, AUDIT_LOG, BENCH, CODE, CODE_TABS, FAQ, LIMITS, LINKS,
   PROBE, STATS, STATUS, USE_CASES,
-} from "../../shared/content";
+} from "../shared/content";
 import { GlassCube } from "./GlassCube";
 import { Instruments } from "./Instruments";
 import { Arrow, GitHubIcon, ProtocolIcon, SecHead } from "./parts";
+import "./fonts.css";
 import "./cleanroom.css";
-
-const FONT_SANS = "https://api.fontshare.com/v2/css?f[]=switzer@1,2&display=swap";
-const FONT_MONO = "https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap";
 
 const WORKS = ["Claude Code (MCP)", "Cursor (MCP)", "OpenAI Agents SDK", "TypeScript", "Python", "any Linux box"];
 
@@ -57,8 +55,6 @@ function useTheme(reduced: boolean) {
 }
 
 export default function CleanRoom() {
-  useFonts(FONT_SANS);
-  useFonts(FONT_MONO);
   const reduced = useReducedMotion();
   const root = useReveal<HTMLDivElement>();
   const { theme, toggle } = useTheme(reduced);
