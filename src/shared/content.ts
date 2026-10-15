@@ -400,6 +400,8 @@ export const LIMITS = [
 export const MAIL_LINKS = {
   privacy: "/mail/privacy",
   legal: "/legal",
+  // Private until the first release; the owner accepts a 404 until then (#4).
+  source: "https://github.com/vorash/vora-mail",
   contact: "mailto:contact@vora.sh",
   contactAddress: "contact@vora.sh",
   // Google requires this exact policy name and link next to the Limited Use sentence.
@@ -414,20 +416,14 @@ export const MAIL_PAGE = {
   intro: "A fast, keyboard-first mail client for Linux. No server in between, encrypted on disk.",
   // README.md "What it does today" and "Privacy and security".
   traits: ["Native GTK4", "Gmail and IMAP", "No telemetry", "MIT or Apache-2.0"],
-  // The hero loop: vora-mail-promotional/video-scripts/storyboard.md, take A.
-  // Rewrite this when the re-recorded take (with All Inboxes) replaces it.
+  // The hero loop: vora-mail-promotional/video-scripts/storyboard.md, take A (20.5 s,
+  // with All Inboxes). Rewrite this when the video changes.
   video: {
-    alt: "An 18-second loop of Vora Mail driven only from the keyboard: j moves to the next conversation, s stars it, e archives one, the keys 1 to 4 switch between the Smart Inbox tabs, Ctrl+K opens the command palette and z undoes the archive.",
-    keys: [
-      { key: "j", label: "next", at: 1.5 },
-      { key: "s", label: "star", at: 2.4 },
-      { key: "e", label: "archive", at: 4.3 },
-      { key: "2", label: "People", at: 5.7 },
-      { key: "3", label: "Updates", at: 6.7 },
-      { key: "4", label: "Newsletters", at: 7.8 },
-      { key: "Ctrl K", label: "palette", at: 10.0 },
-      { key: "z", label: "undo", at: 13.3 },
-    ],
+    alt: "A 20-second loop of Vora Mail with three accounts in All Inboxes, driven only from the keyboard: j moves to the next conversation, s stars it, e archives one and opens a conversation from another account, the keys 1 to 4 switch between the Smart Inbox tabs, Ctrl+2 shows one account's inbox and Ctrl+0 returns to All Inboxes, Ctrl+K opens the command palette and z undoes the archive.",
+  },
+  // Stills from the same take (vora-mail-promotional/videos/hero/stills/).
+  stills: {
+    allInboxes: "Vora Mail's All Inboxes: conversations from three accounts in one list, each row marked with its account's colour, and the accounts as tiles in the side rail.",
   },
   guarantees: [
     // README.md "Privacy and security": "No Vora server", "no telemetry".
@@ -435,7 +431,7 @@ export const MAIL_PAGE = {
     // README.md "Privacy and security"; docs/security.md §5.1, §5.4, §5.6.
     { glyph: "lock", title: "Encrypted on your disk", text: "The database and downloaded attachments are encrypted. The key stays in your system keyring." },
     // README.md "Desktop"; docs/ui-ux.md "Mail navigation shortcuts".
-    { glyph: "keys", title: "Keys before clicks", text: "Every action has a key, and ? lists them all. Ctrl+K finds the rest." },
+    { glyph: "keys", title: "Keys before clicks", text: "j and k to move, e to archive, / to search. ? shows every shortcut, and Ctrl+K opens the command palette." },
   ],
   features: [
     {
@@ -542,7 +538,51 @@ export const MAIL_PAGE = {
     {
       q: "Is it open source? Does it cost anything?",
       // README.md "License" and "Status" (private repo); owner decision (free, non-commercial).
-      a: "It is free and dual-licensed under MIT or Apache-2.0. Nothing is sold: no paid plan, no ads. The repository is private during the alpha; it will be linked here once it is public.",
+      a: "It is free and dual-licensed under MIT or Apache-2.0. Nothing is sold: no paid plan, no ads. The source is on GitHub; the repository is private during the alpha and opens to the public later.",
+    },
+  ],
+};
+
+// ── Legal notice (/legal), for the whole of vora.sh ─────────────────
+// The publisher is a private individual publishing on a non-professional basis
+// (owner decision, #4). LCEN art. 1-1, II (in force since 23 May 2024, read on
+// Légifrance 2026-10-15) then lets the notice name only the hosting provider,
+// provided the publisher's identity was given to that provider. The owner chose
+// host + contact, without the publisher's name.
+export const LEGAL_PAGE = {
+  updated: "15 October 2026",
+  sections: [
+    {
+      id: "publisher",
+      title: "Publisher",
+      paragraphs: [
+        "vora.sh, including vora.sh/probe/ and vora.sh/mail/, is published by a private individual, on a non-professional basis. As article 1-1, II of French law no. 2004-575 of 21 June 2004 (LCEN) allows, the publisher's identity has been given to the hosting provider and is not shown here.",
+      ],
+      contact: true,
+    },
+    {
+      id: "host",
+      title: "Hosting provider",
+      // vercel.com/legal/dmca-policy (address, phone) and vercel.com/legal/privacy-notice
+      // (address), read 2026-10-15. vora.sh answers with `server: Vercel`.
+      card: ["Vercel Inc.", "440 N Barranca Ave #4133", "Covina, CA 91723", "United States", "Phone: +1 559 288 7060"],
+    },
+    {
+      id: "data",
+      title: "Personal data on this site",
+      // AGENTS.md: no third-party requests; theme key in src/shared/theme.ts; the waitlist
+      // form has no backend. Revisit this section if analytics, cookies or a form backend appear.
+      paragraphs: [
+        "This site sets no cookies, runs no analytics and loads nothing from other sites. Your choice of day or night theme is kept only in your own browser. The waitlist form on the home page sends nothing anywhere.",
+        "Like any web host, Vercel may keep technical logs of requests to this site; see Vercel's privacy notice.",
+      ],
+      links: [{ href: "https://vercel.com/legal/privacy-notice", text: "Vercel's privacy notice" }],
+    },
+    {
+      id: "vora-mail",
+      title: "Vora Mail",
+      paragraphs: ["Vora Mail, the desktop mail client presented at vora.sh/mail/, has its own privacy policy."],
+      links: [{ href: "/mail/privacy", text: "Vora Mail privacy policy" }],
     },
   ],
 };

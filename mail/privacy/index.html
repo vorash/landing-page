@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vora Mail — Privacy policy</title>
+    <meta name="description" content="How Vora Mail, the Linux mail client, handles your data: no server, mail encrypted on your computer, optional AI off by default, and Google's Limited Use requirements." />
+    <meta name="theme-color" content="#f6f6f3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0b0f" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("vora-cr-theme");
+          if (t !== "day" && t !== "night") t = matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
+          document.documentElement.style.background = t === "night" ? "#0a0b0f" : "#f6f6f3";
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/vora-logo-trans.ico" sizes="any" />
+    <link rel="canonical" href="https://www.vora.sh/mail/privacy" />
+    <meta name="robots" content="index, follow" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/mail/privacy.tsx"></script>
+  </body>
+</html>

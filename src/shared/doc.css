@@ -1,0 +1,50 @@
+/* Long-form pages (/mail/privacy, /legal). Clean Room tokens; selectors use cd-. */
+.cr .cd-doc { border-top: 1px solid var(--line); }
+.cr.cr-doc-page .cp-nav .cr-nav__right { margin-left: auto; }
+.cr .cd-doc__head { padding-block: clamp(56px, 8vw, 104px) clamp(32px, 4vw, 48px); border-bottom: 1px solid var(--line); }
+.cr .cd-doc__head h1 { margin-top: 20px; font-size: clamp(2.6rem, 5.4vw, 4.6rem); font-weight: 600; line-height: 1; letter-spacing: -0.05em; text-wrap: balance; }
+.cr .cd-doc__meta { display: flex; flex-wrap: wrap; gap: 8px 24px; max-width: 52em; margin-top: 24px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+.cr .cd-doc__meta a { color: var(--accent); text-underline-offset: 3px; }
+.cr .cd-doc__grid { display: grid; grid-template-columns: minmax(200px, 260px) minmax(0, 46rem); gap: clamp(32px, 6vw, 96px); padding-block: clamp(40px, 6vw, 72px) clamp(72px, 9vw, 120px); }
+
+.cr .cd-doc__toc { position: sticky; top: 88px; align-self: start; max-height: calc(100vh - 110px); overflow-y: auto; }
+.cr .cd-doc__toc summary { color: var(--muted-2); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; list-style: none; }
+.cr .cd-doc__toc summary::-webkit-details-marker { display: none; }
+.cr .cd-doc__toc ol { display: grid; gap: 2px; margin-top: 14px; border-left: 1px solid var(--line-2); }
+.cr .cd-doc__toc a { display: block; padding: 5px 0 5px 14px; margin-left: -1px; border-left: 1px solid transparent; color: var(--muted); font-size: 13.5px; line-height: 1.4; text-decoration: none; }
+.cr .cd-doc__toc a:hover { border-left-color: var(--accent); color: var(--ink); }
+
+.cr .cd-doc__body { min-width: 0; color: var(--ink-2); font-size: 16.5px; line-height: 1.7; }
+.cr .cd-doc__body > :first-child { margin-top: 0; }
+.cr .cd-doc__body h2 { margin: 2.6em 0 0.7em; padding-top: 0.2em; color: var(--ink); font-size: clamp(1.45rem, 2.2vw, 1.8rem); font-weight: 600; line-height: 1.2; letter-spacing: -0.03em; scroll-margin-top: 90px; }
+.cr .cd-doc__body h3 { margin: 1.9em 0 0.5em; color: var(--ink); font-size: 1.12rem; font-weight: 600; letter-spacing: -0.015em; scroll-margin-top: 90px; }
+.cr .cd-doc__body p, .cr .cd-doc__body ul, .cr .cd-doc__body ol, .cr .cd-doc__body blockquote { margin: 0 0 1.05em; }
+.cr .cd-doc__body ul, .cr .cd-doc__body ol { padding-left: 1.3em; }
+.cr .cd-doc__body ul { list-style: disc; }
+.cr .cd-doc__body ol { list-style: decimal; }
+.cr .cd-doc__body li { margin: 0.35em 0; }
+.cr .cd-doc__body li > ul, .cr .cd-doc__body li > ol { margin: 0.35em 0 0; }
+.cr .cd-doc__body li::marker { color: var(--muted-2); }
+.cr .cd-doc__body strong { color: var(--ink); font-weight: 600; }
+.cr .cd-doc__body a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.cr .cd-doc__body a:hover { color: var(--accent-h); }
+.cr .cd-doc__body code { padding: 0.1em 0.35em; border-radius: 5px; background: var(--sunk); color: var(--ink); font-size: 0.86em; overflow-wrap: anywhere; }
+.cr .cd-doc__body blockquote { padding: 2px 0 2px 16px; border-left: 2px solid var(--line-3); color: var(--muted); }
+.cr .cd-doc__body hr { height: 1px; margin: 2.5em 0; border: 0; background: var(--line); }
+.cr .cd-doc__table { margin: 1.4em 0 1.6em; overflow-x: auto; border: 1px solid var(--line-2); border-radius: 14px; background: var(--surface); }
+.cr .cd-doc__table table { width: 100%; border-collapse: collapse; font-size: 14.5px; line-height: 1.5; }
+.cr .cd-doc__table th, .cr .cd-doc__table td { padding: 12px 16px; text-align: left; vertical-align: top; }
+.cr .cd-doc__table th { border-bottom: 1px solid var(--line-2); color: var(--muted-2); font-family: var(--mono); font-size: 10.5px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; }
+.cr .cd-doc__table td { min-width: 9em; }
+.cr .cd-doc__table tr + tr td { border-top: 1px solid var(--line); }
+.cr .cd-doc__todo { padding: 0 0.25em; border-radius: 4px; background: var(--deny-bg); color: var(--deny-ink); }
+
+.cr .cd-card { margin: 0 0 1.4em; font-style: normal; padding: 20px 22px; border: 1px solid var(--line-2); border-radius: 14px; background: var(--surface); }
+.cr .cd-card p { margin: 0; }
+.cr .cd-card p + p { margin-top: 0.2em; }
+
+@media (max-width: 900px) {
+  .cr .cd-doc__grid { grid-template-columns: 1fr; gap: 28px; }
+  .cr .cd-doc__toc { position: static; max-height: none; padding: 16px 18px; border: 1px solid var(--line-2); border-radius: 14px; background: var(--surface-2); }
+  .cr .cd-doc__body { font-size: 16px; }
+}

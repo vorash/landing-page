@@ -14,8 +14,6 @@ export default function MailPage() {
   const root = useReveal<HTMLDivElement>();
   const reduced = useReducedMotion();
   const { theme, toggle } = useTheme(reduced);
-  // Preview of direction B's hero (a key rail synced to the video). Remove once a direction is chosen.
-  const keysRail = new URLSearchParams(window.location.search).get("hero") === "keys";
 
   useEffect(() => {
     const onKey = (e: globalThis.KeyboardEvent) => {
@@ -38,6 +36,7 @@ export default function MailPage() {
             <a href="#features">Features</a>
             <a href="#data">Your data</a>
             <a href="#faq">FAQ</a>
+            <a href={MAIL_LINKS.privacy}>Privacy</a>
           </div>
           <div className="cr-nav__right">
             <button type="button" className={`cr-lights ${theme === "night" ? "is-night" : ""}`}
@@ -53,7 +52,7 @@ export default function MailPage() {
               </span></span>
               <span className="cr-lights__label">{theme === "night" ? "Night" : "Day"}</span>
             </button>
-            <a className="cr-btn cr-btn--glass cr-btn--sm" href={MAIL_LINKS.privacy}>Privacy</a>
+            <a className="cr-btn cr-btn--primary cr-btn--sm" href={MAIL_LINKS.source}>Source <Arrow /></a>
           </div>
         </div>
       </nav>
@@ -71,7 +70,7 @@ export default function MailPage() {
               </div>
               <p className="cr-fine">{MAIL_PAGE.traits.map((t) => <span key={t}>{t}</span>)}</p>
             </div>
-            <HeroVideo theme={theme} reduced={reduced} keysRail={keysRail} />
+            <HeroVideo theme={theme} reduced={reduced} />
           </div>
         </header>
 
@@ -142,7 +141,7 @@ export default function MailPage() {
       <footer className="cr-foot"><div className="cr-wrap cr-foot__in">
         <a className="cr-logo" href="/" aria-label="Vora home"><MarkPrism size={20} /><span>vora</span></a>
         <nav className="cr-foot__links" aria-label="Footer">
-          <a href="/">Vora</a><a href="/probe/">Probe</a><a href="/mail/">Mail</a>
+          <a href="/">Vora</a><a href="/probe/">Probe</a><a href="/mail/">Mail</a><a href={MAIL_LINKS.source}>Mail on GitHub</a>
           <a href={MAIL_LINKS.privacy}>Mail privacy</a><a href={MAIL_LINKS.legal}>Legal notice</a>
           <a href={MAIL_LINKS.contact}>{MAIL_LINKS.contactAddress}</a>
         </nav>
@@ -154,28 +153,14 @@ export default function MailPage() {
 
 const VIDEO_BASE = "/mail/vora-mail-hero-";
 
-function HeroVideo({ theme, reduced, keysRail }: { theme: Theme; reduced: boolean; keysRail: boolean }) {
+function HeroVideo({ theme, reduced }: { theme: Theme; reduced: boolean }) {
   const video = useRef<HTMLVideoElement>(null);
   // Under reduced motion the poster stays until the visitor presses play.
   const [playing, setPlaying] = useState(!reduced);
-  const [active, setActive] = useState(-1);
   const file = `${VIDEO_BASE}${theme === "night" ? "dark" : "light"}`;
 
   useEffect(() => setPlaying(!reduced), [reduced]);
 
-  useEffect(() => {
-    const v = video.current;
-    if (!keysRail || !v) return;
-    // timeupdate fires about four times a second: enough to light a key for 1.1 s.
-    const onTime = () => {
-      const keys = MAIL_PAGE.video.keys;
-      let i = -1;
-      for (let k = 0; k < keys.length; k++) if (v.currentTime >= keys[k].at && v.currentTime < keys[k].at + 1.1) i = k;
-      setActive(i);
-    };
-    v.addEventListener("timeupdate", onTime);
-    return () => v.removeEventListener("timeupdate", onTime);
-  }, [keysRail, theme]);
 
   const toggle = () => {
     const v = video.current;
@@ -183,7 +168,7 @@ function HeroVideo({ theme, reduced, keysRail }: { theme: Theme; reduced: boolea
     if (v.paused) { v.play(); setPlaying(true); } else { v.pause(); setPlaying(false); }
   };
 
-  return <figure className={`cm-window ${keysRail ? "cm-window--rail" : ""}`}>
+  return <figure className="cm-window">
     <div className="cm-window__frame">
       {/* Keyed on the theme so the element reloads its sources when the theme flips. */}
       <video key={theme} ref={video} className="cm-window__media" autoPlay={playing} muted loop playsInline preload="metadata"
@@ -199,21 +184,14 @@ function HeroVideo({ theme, reduced, keysRail }: { theme: Theme; reduced: boolea
           : <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" /></svg>}
       </button>
     </div>
-    {keysRail && <ol className="cm-rail" aria-hidden="true">
-      {MAIL_PAGE.video.keys.map((k, i) => <li key={k.key + k.at} className={i === active || (!playing && i === 0) ? "is-on" : ""}>
-        <kbd>{k.key}</kbd><span>{k.label}</span>
-      </li>)}
-    </ol>}
     <figcaption className="cr-sr" id="cm-video-alt">{MAIL_PAGE.video.alt}</figcaption>
   </figure>;
 }
 
 function FeatureVisual({ id, theme }: { id: string; theme: Theme }) {
-  if (id === "accounts") return <div className="cm-vis cm-vis--accounts" aria-hidden="true">
-    <div className="cm-vis__src"><span className="cm-dot cm-dot--a" />Gmail<small>Gmail API</small></div>
-    <div className="cm-vis__src"><span className="cm-dot cm-dot--b" />IMAP / SMTP<small>TLS only</small></div>
-    <div className="cm-vis__src"><span className="cm-dot cm-dot--c" />IMAP / SMTP<small>TLS only</small></div>
-    <div className="cm-vis__merge"><kbd>Ctrl</kbd><kbd>0</kbd><b>All Inboxes</b></div>
+  const still = theme === "night" ? "dark" : "light";
+  if (id === "accounts") return <div className="cm-vis cm-vis--still">
+    <img src={`/mail/${still}-all-inboxes.webp`} alt={MAIL_PAGE.stills.allInboxes} loading="lazy" width={1600} height={1000} />
   </div>;
   if (id === "smart-inbox") return <div className="cm-vis cm-vis--tabs" aria-hidden="true">
     {MAIL_PAGE.features[1].tabs!.map((t, i) => <span key={t} className={i === 0 ? "is-on" : ""}><kbd>{i + 1}</kbd>{t}</span>)}
@@ -228,8 +206,8 @@ function FeatureVisual({ id, theme }: { id: string; theme: Theme }) {
     <div className="cm-vis__lines"><i /><i /><i /><i /></div>
     <div className="cm-vis__status"><span><span className="cm-dot cm-dot--b" />Draft saved here and on the server</span><span>Outbox → Sent</span></div>
   </div>;
-  return <div className="cm-vis cm-vis--desktop" aria-hidden="true">
-    <img src={`/mail/${theme === "night" ? "dark" : "light"}-palette.webp`} alt="" loading="lazy" width={1600} height={1000} />
+  return <div className="cm-vis cm-vis--desktop cm-vis--still" aria-hidden="true">
+    <img src={`/mail/${still}-palette.webp`} alt="" loading="lazy" width={1600} height={1000} />
     <div className="cm-vis__keys">{MAIL_PAGE.shortcuts.map((s) => <div key={s.label}>{s.keys.map((k) => <kbd key={k}>{k}</kbd>)}<span>{s.label}</span></div>)}</div>
   </div>;
 }
