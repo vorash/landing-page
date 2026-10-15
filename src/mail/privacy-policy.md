@@ -1,5 +1,7 @@
-<!-- Copied from vorash/vora-mail docs/privacy-policy.md at 4f9b66e (origin/docs/328-privacy-casa) by scripts/sync-mail-privacy.sh. Edit it there, not here. -->
+<!-- Copied from vorash/vora-mail docs/privacy-policy.md at 58a9e62 (58a9e625cfb540851bfdf554c646c21858653795) by scripts/sync-mail-privacy.sh. Edit it there, not here. -->
 # Vora Mail — Privacy Policy
+
+Effective date: [EFFECTIVE DATE].
 
 > **DRAFT. Not in force. Pending review by the project owner and by legal counsel.**
 >
@@ -12,13 +14,15 @@
 > disagreed, the code was followed. Appendix A lists what each claim rests on, and Appendix B what
 > is still undecided. Delete both appendices and this banner before publishing.
 >
-> Effective date: `[EFFECTIVE DATE]`. To be published at: <https://www.vora.sh/mail/privacy>.
+> To be published at: <https://www.vora.sh/mail/privacy>. The effective date is the line under the
+> title; the website reads it from there.
 
 ## 1. Who this is about
 
 Vora Mail (called "Vora" in the rest of this policy) is a free, open-source, non-commercial desktop
-email client for Linux, published by Iulian Safta, a private individual living in France ("we", "the publisher"). Its source code is open and
-licensed under either the MIT or the Apache-2.0 licence (`LICENSE-MIT`, `LICENSE-APACHE`). It is
+email client for Linux, published by Iulian Safta, a private individual living in France ("we", "the publisher"). Its source code (<https://github.com/vorash/vora-mail>) is open and
+licensed under either the MIT licence (<https://opensource.org/license/mit>) or the Apache License
+2.0 (<https://www.apache.org/licenses/LICENSE-2.0>). It is
 not sold, and it has no advertising and no paid plan. This policy covers
 the Vora application on your computer: the window (`vora`), its background service (`vorad`) and
 its command line tool (`vora-cli`). It does not cover your mail provider, Google, Anthropic or
@@ -75,8 +79,7 @@ something you did: a label change, a read mark, a draft, a sent message.
 
 If you add an account that is not a Google account, Vora signs in to your provider's IMAP and SMTP
 servers with the address and password you give. It reads folders and messages the same way and
-stores them the same way as above. `[OWNER: decide whether other providers belong in this policy,
-see Appendix B.]`
+stores them the same way as above. `[OWNER: decide whether other providers belong in this policy.]`
 
 Before an account is added, Vora can look up your provider's server settings. It then asks
 `autoconfig.<your address's domain>` and `autoconfig.thunderbird.net` over HTTPS. Only the domain
@@ -153,8 +156,7 @@ is not offered for its messages. Gmail accounts signed in with your own Google c
 IMAP/SMTP accounts (including Gmail used with an app password), can use both features as described
 below. The writing assistant on text you write yourself (§6.1) works for every account.
 `[OWNER: whether Google treats a draft synced from Gmail, or the recipients' names, as restricted
-Gmail data is undecided; if it does, those requests would be blocked for such accounts too. See
-Appendix B.]`
+Gmail data is undecided; if it does, those requests would be blocked for such accounts too.]`
 
 ### 6.1 The writing assistant (Anthropic)
 
@@ -322,7 +324,7 @@ In practice, for Gmail data (the content and metadata Vora receives through the 
   the reply context of the writing assistant a second confirmation and a tick for each request,
   and for Check as you type its own confirmation. The text you write yourself in the composer can
   go to Anthropic from any account when you ask for the writing assistant
-  `[OWNER: see Appendix B on whether that counts as Gmail data]`. Both providers state that they
+  `[OWNER: undecided whether that counts as Gmail data, see the previous OWNER note in §6]`. Both providers state that they
   do not train their models on this data (§6.3 and §6.4). We do not sell it or give it to
   advertisers, data brokers or resellers.
 - **People reading it.** No person at the publisher can read it, because it never reaches us.
@@ -348,7 +350,7 @@ message in any case.
 **Withdraw consent.** Turning a feature off stops all further transfers. Turning it on again asks
 you to confirm again. What a provider already received is held under its own terms (§6.3, §6.4);
 to have it deleted, ask the provider. `[OWNER: Settings does not yet let the user forget the
-one-time confirmation of the reply box (assist.reply_context_since); see Appendix B.]`
+one-time confirmation of the reply box (assist.reply_context_since).]`
 
 **Remove an account.** Settings → Accounts → remove. Vora asks Google to revoke its access (if
 that request fails, for example because you are offline, the account is still removed), deletes the
@@ -359,8 +361,7 @@ your Google Account at <https://myaccount.google.com/permissions>.
 
 **Delete everything Vora stored.** Quit Vora, then delete `~/.local/share/vora/` (mail and
 attachments) and `~/.config/vora/` (settings), and delete the keyring items with
-`application = vora`, which include the database key (for example with your keyring's manager;
-`scripts/keyring-items.sh` lists them without showing the secrets). Copies you made yourself when
+`application = vora`, which include the database key (for example with your keyring's manager). Copies you made yourself when
 saving an attachment, and copies another application kept (§4), are outside Vora's folders.
 
 **Remote images.** Settings → Privacy: ask (default), never, or always.
@@ -373,7 +374,8 @@ it. Credentials and the database key are in the
 system keyring. The mail database and the downloaded attachments are encrypted at rest and readable
 only by you. Received mail given
 to an AI service is wrapped as untrusted data, and the assistant has no tools: a result can at worst
-be a bad suggestion that you see and reject. See `docs/security.md` for the full description.
+be a bad suggestion that you see and reject. The full technical description is in the project's security document
+(<https://github.com/vorash/vora-mail/blob/main/docs/security.md>).
 
 ## 10. Children
 
@@ -384,7 +386,7 @@ be a bad suggestion that you see and reject. See `docs/security.md` for the full
 `[LEGAL: how we announce changes, and where the dated history is kept.]` If a change affects what
 the writing assistant sends to a third party, the application asks for your consent again before
 the new behaviour starts. (Built for the writing assistant, its reply box and Check as you type; not
-yet for Smart Inbox AI triage, whose confirmation is not versioned. See Appendix B.)
+yet for Smart Inbox AI triage, whose confirmation does not carry a version.)
 
 ## 12. Who is responsible, your rights, contact
 

@@ -16,15 +16,18 @@ const ID = "virtual:mail-privacy";
 // [OWNER: …], [LEGAL: …] and all-caps placeholders such as [EFFECTIVE DATE].
 // An all-caps link text like [TLS](…) would match too; none exists today.
 const MARKER = /`?\[(?:(?:OWNER|LEGAL):[\s\S]*?|[A-Z][A-Z ]{2,})\]`?/g;
-const EFFECTIVE = /Effective date:?\**\s*`?([^`\n]+?)`?\.?(?:\s+To be published|\s*$)/m;
+// The policy's own "Effective date: …" line under its title. The page shows it
+// in its header, so the line is taken out of the body.
+const EFFECTIVE = /^\**Effective date:?\**\s*`?([^`\n]+?)`?\.?\s*\n+/m;
 
 export function prepare(raw: string) {
   let md = raw.replace(/<!--[\s\S]*?-->\n?/g, "").trimStart();
   md = md.replace(/^# .*\n+/, ""); // the page has its own title
-  const banner = /^(?:>.*\n)+/.exec(md)?.[0] ?? "";
+  const date = EFFECTIVE.exec(md);
+  if (date) md = md.slice(0, date.index) + md.slice(date.index + date[0].length);
+  const effective = date?.[1] ?? "[EFFECTIVE DATE]";
+  const banner = /^(?:>.*\n)+\n*/.exec(md)?.[0] ?? ""; // the DRAFT banner
   md = md.slice(banner.length);
-  // The banner goes before publication, so the date may live in the body instead.
-  const effective = (EFFECTIVE.exec(md) ?? EFFECTIVE.exec(banner))?.[1] ?? "[EFFECTIVE DATE]";
   const appendix = md.search(/^## Appendix A\b/m);
   if (appendix >= 0) md = md.slice(0, appendix);
   md = md.replace(/\n-{3,}\s*$/, "\n"); // the rule that stood before the appendices
