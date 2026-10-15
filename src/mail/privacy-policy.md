@@ -1,4 +1,4 @@
-<!-- Copied from vorash/vora-mail docs/privacy-policy.md at 58a9e62 (58a9e625cfb540851bfdf554c646c21858653795) by scripts/sync-mail-privacy.sh. Edit it there, not here. -->
+<!-- Copied from vorash/vora-mail docs/privacy-policy.md at 453ac8f (453ac8f631e264c369e2fa7601d697b3a5b49e95) by scripts/sync-mail-privacy.sh. Edit it there, not here. -->
 # Vora Mail — Privacy Policy
 
 Effective date: [EFFECTIVE DATE].
@@ -6,8 +6,8 @@ Effective date: [EFFECTIVE DATE].
 > **DRAFT. Not in force. Pending review by the project owner and by legal counsel.**
 >
 > Status: draft for M10-T01 (`docs/roadmap.md`), tracking issue #328. Nothing here has been
-> published. Everything still in `[BRACKETS]` is a placeholder for the owner or for legal counsel;
-> do not invent values.
+> published. The only placeholder left is the effective date, which the owner sets on the day of
+> publication. The wording of §10 to §13 is the owner's choice and is not legal advice.
 >
 > Every statement about what Vora does was checked against the code on `main` at commit `b802b1d`
 > (2026-10-15, after database and attachment encryption and the Gmail AI boundary of #374 landed). Where a document and the code
@@ -28,7 +28,7 @@ the Vora application on your computer: the window (`vora`), its background servi
 its command line tool (`vora-cli`). It does not cover your mail provider, Google, Anthropic or
 TypeSafe: each has its own policy, linked below.
 
-Contact for privacy questions: contact@vora.sh. Who is responsible for what, and your rights, are in §12.
+Contact for privacy questions: contact@vora.sh. Who is responsible for what, and your rights, are in §12; the website is in §13.
 
 ## 2. The short version
 
@@ -79,7 +79,7 @@ something you did: a label change, a read mark, a draft, a sent message.
 
 If you add an account that is not a Google account, Vora signs in to your provider's IMAP and SMTP
 servers with the address and password you give. It reads folders and messages the same way and
-stores them the same way as above. `[OWNER: decide whether other providers belong in this policy.]`
+stores them the same way as above.
 
 Before an account is added, Vora can look up your provider's server settings. It then asks
 `autoconfig.<your address's domain>` and `autoconfig.thunderbird.net` over HTTPS. Only the domain
@@ -155,8 +155,8 @@ only, whatever the setting says, and the writing assistant's "Use the message I'
 is not offered for its messages. Gmail accounts signed in with your own Google client, and
 IMAP/SMTP accounts (including Gmail used with an app password), can use both features as described
 below. The writing assistant on text you write yourself (§6.1) works for every account.
-`[OWNER: whether Google treats a draft synced from Gmail, or the recipients' names, as restricted
-Gmail data is undecided; if it does, those requests would be blocked for such accounts too.]`
+If Google's review decides that a draft synced from Gmail, or the recipients' names, count as
+restricted Gmail data, the app and this policy will change together.
 
 ### 6.1 The writing assistant (Anthropic)
 
@@ -295,9 +295,8 @@ TypeSafe's own words, read on 2026-10-15. **To be read again before publishing a
   necessary to provide you with the Services", and the data processing addendum
   (<https://typesafe.ai/legal/data-processing>, dated Apr 24, 2026) says personal data "will be
   retained for as long as necessary taking into account the purpose of the Processing". Neither
-  page, as read on that date, gives a number of days or mentions zero retention. The in-app
-  dialog says zero retention is offered only to enterprise customers; that sentence could not be
-  confirmed on these two pages. `[OWNER: confirm with TypeSafe, or reword the dialog.]`
+  page, as read on that date, gives a number of days. TypeSafe's own pages above are the terms
+  that apply.
 
 ## 7. Google user data: Limited Use
 
@@ -323,8 +322,7 @@ In practice, for Gmail data (the content and metadata Vora receives through the 
   feature you turned on, with your consent: your confirmation when you turned the feature on, for
   the reply context of the writing assistant a second confirmation and a tick for each request,
   and for Check as you type its own confirmation. The text you write yourself in the composer can
-  go to Anthropic from any account when you ask for the writing assistant
-  `[OWNER: undecided whether that counts as Gmail data, see the previous OWNER note in §6]`. Both providers state that they
+  go to Anthropic from any account when you ask for the writing assistant. Both providers state that they
   do not train their models on this data (§6.3 and §6.4). We do not sell it or give it to
   advertisers, data brokers or resellers.
 - **People reading it.** No person at the publisher can read it, because it never reaches us.
@@ -349,8 +347,9 @@ message in any case.
 
 **Withdraw consent.** Turning a feature off stops all further transfers. Turning it on again asks
 you to confirm again. What a provider already received is held under its own terms (§6.3, §6.4);
-to have it deleted, ask the provider. `[OWNER: Settings does not yet let the user forget the
-one-time confirmation of the reply box (assist.reply_context_since).]`
+to have it deleted, ask the provider. Settings cannot yet forget the one-time confirmation of
+"Use the message I'm replying to" once you have given it; turning the writing assistant off stops
+all further requests.
 
 **Remove an account.** Settings → Accounts → remove. Vora asks Google to revoke its access (if
 that request fails, for example because you are offline, the account is still removed), deletes the
@@ -379,11 +378,13 @@ be a bad suggestion that you see and reject. The full technical description is i
 
 ## 10. Children
 
-`[LEGAL: age statement.]`
+Vora Mail is not intended for anyone under 15.
 
 ## 11. Changes to this policy
 
-`[LEGAL: how we announce changes, and where the dated history is kept.]` If a change affects what
+Changes are announced on this page, with a new effective date. The dated history of this policy
+is kept in the project's public source repository (<https://github.com/vorash/vora-mail>). If a
+change affects what
 the writing assistant sends to a third party, the application asks for your consent again before
 the new behaviour starts. (Built for the writing assistant, its reply box and Check as you type; not
 yet for Smart Inbox AI triage, whose confirmation does not carry a version.)
@@ -397,28 +398,43 @@ open-source (MIT or Apache-2.0), non-commercial project. Contact: contact@vora.s
 address book, settings or usage data from the application. The publisher is the controller (under
 the GDPR) only of the little it processes itself: the emails you send to contact@vora.sh, meaning
 your address, your name if you give it, and what you write. It uses them to answer you. The legal
-basis is its legitimate interest in answering messages sent to it (Article 6(1)(f) GDPR)
-`[LEGAL: confirm]`. They are kept for `[RETENTION PERIOD]` and are held by `[EMAIL PROVIDER]`, which
-hosts the mailbox. `[OWNER: the vora.sh website itself (hosting logs, cookies, analytics) is not
-covered here; add it if it processes personal data.]`
+basis is its legitimate interest in answering messages sent to it (Article 6(1)(f) GDPR). They are
+kept as long as needed to answer, and at most 2 years. The address contact@vora.sh is received by
+Cloudflare (Cloudflare Email Routing) and forwarded to a Gmail mailbox (Google); both process the
+emails on the publisher's behalf.
 
 **What Vora sends from your computer to others.** The data that Vora sends to Google, to your mail
 provider, to Anthropic or to TypeSafe goes from your computer, with your accounts and your keys, and
-is governed by their policies (§6). The publisher does not receive it and does not decide how those
-providers use it. `[LEGAL: confirm this characterisation of roles.]`
+is governed by their policies (§6). Requests to Anthropic and TypeSafe are made by you, under your
+own agreement with each and with your own key, not on the publisher's behalf. The publisher does not
+receive that data and does not decide how those providers use it.
 
 **Your rights.** Because the publisher is established in France, the GDPR applies. For the data in
-the paragraph above you have the rights of access, rectification, erasure, restriction of
+the paragraphs above you have the rights of access, rectification, erasure, restriction of
 processing, objection and data portability, and, where processing rests on your consent, the right
 to withdraw it. Write to contact@vora.sh; the publisher answers within one month. You may also
 complain to the French data protection authority, the CNIL (<https://www.cnil.fr>), or to the
 authority of the country where you live.
 
-**Governing law.** This policy is governed by French law, without removing any protection that the
-mandatory law of the country where you live gives you. `[LEGAL: confirm; competent courts.]`
+**Transfers outside the EEA, and a data protection officer.** Requests to Anthropic and TypeSafe,
+which may be outside the European Economic Area, are made directly between you and those providers.
+Contact emails pass through Cloudflare and Google, which may process them outside the EEA under
+their own safeguards. No data protection officer is required for this processing, and none has been
+appointed.
 
-`[LEGAL: transfers outside the EEA for requests that go to Anthropic and TypeSafe (they are
-between you and them); whether a data protection officer is needed; any other mandatory mention.]`
+**Governing law.** This policy is governed by French law. If you are a consumer, you keep the
+protection of the mandatory law of the country where you live, and you may bring a claim before the
+courts of that country.
+
+## 13. This website (www.vora.sh)
+
+The website where this policy is published is separate from the application. It is hosted by
+Vercel (<https://vercel.com>), which processes request logs, such as the IP address and the user
+agent, to serve and protect the site; see
+[Vercel's privacy notice](https://vercel.com/legal/privacy-notice). The site sets no cookies, has no
+analytics and loads nothing from third parties (its fonts are served from the site itself). The only
+thing it stores is your choice of day or night theme, in your own browser (`localStorage`), and that
+is never sent anywhere. The mailing-list form on the home page does not send what you type anywhere.
 
 ---
 
