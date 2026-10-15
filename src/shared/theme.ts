@@ -10,7 +10,7 @@ function initialTheme(): Theme {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
 }
 
-// Keep the key in sync with the no-flash scripts in index.html and probe/index.html.
+// Keep the key in sync with the no-flash scripts in index.html, probe/index.html and mail/index.html.
 export function useTheme(reduced: boolean) {
   const [theme, setTheme] = useState<Theme>(initialTheme);
 

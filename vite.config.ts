@@ -16,6 +16,7 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, 'index.html'),
         probe: path.resolve(__dirname, 'probe/index.html'),
+        mail: path.resolve(__dirname, 'mail/index.html'),
       },
     },
   },
