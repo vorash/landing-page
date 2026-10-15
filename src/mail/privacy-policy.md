@@ -1,21 +1,7 @@
-<!-- Copied from vorash/vora-mail docs/privacy-policy.md at 453ac8f (453ac8f631e264c369e2fa7601d697b3a5b49e95) by scripts/sync-mail-privacy.sh. Edit it there, not here. -->
+<!-- Copied from vorash/vora-mail docs/privacy-policy.md at 8004a99 (origin/main) by scripts/sync-mail-privacy.sh. Edit it there, not here. -->
 # Vora Mail — Privacy Policy
 
-Effective date: [EFFECTIVE DATE].
-
-> **DRAFT. Not in force. Pending review by the project owner and by legal counsel.**
->
-> Status: draft for M10-T01 (`docs/roadmap.md`), tracking issue #328. Nothing here has been
-> published. The only placeholder left is the effective date, which the owner sets on the day of
-> publication. The wording of §10 to §13 is the owner's choice and is not legal advice.
->
-> Every statement about what Vora does was checked against the code on `main` at commit `b802b1d`
-> (2026-10-15, after database and attachment encryption and the Gmail AI boundary of #374 landed). Where a document and the code
-> disagreed, the code was followed. Appendix A lists what each claim rests on, and Appendix B what
-> is still undecided. Delete both appendices and this banner before publishing.
->
-> To be published at: <https://www.vora.sh/mail/privacy>. The effective date is the line under the
-> title; the website reads it from there.
+Effective date: 15 October 2026.
 
 ## 1. Who this is about
 
