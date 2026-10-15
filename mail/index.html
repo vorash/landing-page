@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vora Mail — A keyboard-first mail client for Linux</title>
+    <meta name="description" content="Vora Mail is a fast, keyboard-first, local-first mail client for Linux. No server in between, mail encrypted on your disk, optional AI off by default." />
+    <meta name="theme-color" content="#f6f6f3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0b0f" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("vora-cr-theme");
+          if (t !== "day" && t !== "night") t = matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
+          document.documentElement.style.background = t === "night" ? "#0a0b0f" : "#f6f6f3";
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href="https://www.vora.sh/mail/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.vora.sh/mail/" />
+    <meta property="og:title" content="Vora Mail — Your mail, on your computer." />
+    <meta property="og:description" content="A fast, keyboard-first mail client for Linux. No server in between, encrypted on disk." />
+    <meta property="og:image" content="https://www.vora.sh/mail/vora-mail-hero-light-poster.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="robots" content="index, follow" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/mail/main.tsx"></script>
+  </body>
+</html>

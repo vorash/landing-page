@@ -78,6 +78,7 @@ function Nav({ theme, onToggle }: { theme: Theme; onToggle: (o?: { x: number; y:
           <a href="#airlock">Security</a>
           <a href="#build">Build</a>
           <a href="/probe/">Probe</a>
+          <a href="/mail/">Mail</a>
           <a href={LINKS.github}>GitHub</a>
         </div>
         <div className="cr-nav__right">
@@ -868,6 +869,9 @@ function Footer() {
           <a href={LINKS.adrs}>ADRs</a>
           <a href={LINKS.examples}>Examples</a>
           <a href="/probe/">Probe</a>
+          <a href="/mail/">Mail</a>
+          <a href="/mail/privacy">Mail privacy</a>
+          <a href="/legal">Legal notice</a>
           <a href="/llms.txt">llms.txt</a>
         </nav>
         <p className="cr-foot__legal">MIT · © {new Date().getFullYear()} Vora</p>

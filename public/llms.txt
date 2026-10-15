@@ -24,9 +24,21 @@
 
 - Vora Probe: a read-only incident investigator whose untrusted worker runs inside a Vora sandbox with no network and no credentials, and whose claims policy refuses conclusions the evidence does not support.
 
+## Vora Mail
+
+A separate product from the Vora runtime: a native GTK4, keyboard-first, local-first mail client for Linux (Arch and Omarchy first; also Ubuntu 24.04, Debian 13, Fedora). Status: alpha 0.1.0-alpha.2, not released yet. Free, MIT or Apache-2.0.
+
+- No Vora server and no telemetry: mail goes between your provider (Gmail API or IMAP/SMTP over TLS) and your computer.
+- Mail database (SQLCipher) and downloaded attachments (XChaCha20-Poly1305) encrypted on disk; the key, passwords and tokens are kept in the system keyring.
+- Several accounts with All Inboxes, Smart Inbox tabs sorted by local rules, local search, rich-text compose with a local outbox.
+- Optional AI, off by default, with your own API key: a writing assistant (Anthropic) and Smart Inbox triage (TypeSafe). Mail read through Vora Mail's built-in Google sign-in is never sent to an AI service.
+
 ## Links
 
 - Source: https://github.com/vorash/vora
 - Threat model: https://github.com/vorash/vora/blob/main/docs/architecture/threat-model.md
 - Probe: https://github.com/vorash/vora-probe
-- Probe page: https://vora.sh/probe/
+- Probe page: https://www.vora.sh/probe/
+- Vora Mail: https://www.vora.sh/mail/
+- Vora Mail privacy policy: https://www.vora.sh/mail/privacy
+- Legal notice: https://www.vora.sh/legal
