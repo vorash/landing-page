@@ -1,4 +1,4 @@
-<!-- Copied from vorash/vora-mail docs/privacy-policy.md at 8004a99 (origin/main) by scripts/sync-mail-privacy.sh. Edit it there, not here. -->
+<!-- Copied from vorash/vora-mail docs/privacy-policy.md at c6a301e (origin/main) by scripts/sync-mail-privacy.sh. Edit it there, not here. -->
 # Vora Mail — Privacy Policy
 
 Effective date: 15 October 2026.
@@ -385,7 +385,10 @@ address book, settings or usage data from the application. The publisher is the 
 the GDPR) only of the little it processes itself: the emails you send to contact@vora.sh, meaning
 your address, your name if you give it, and what you write. It uses them to answer you. The legal
 basis is its legitimate interest in answering messages sent to it (Article 6(1)(f) GDPR). They are
-kept as long as needed to answer, and at most 2 years. The address contact@vora.sh is received by
+kept as long as needed to answer, and at most 2 years. If you write to join the list (the form on
+the home page prepares that email), your address is also used to send you news about Vora and its projects, including Vora Mail,
+on the basis of your consent (Article 6(1)(a) GDPR), and kept until you ask to leave the list,
+which you can do at any time by writing to the same address. The address contact@vora.sh is received by
 Cloudflare (Cloudflare Email Routing) and forwarded to a Gmail mailbox (Google); both process the
 emails on the publisher's behalf.
 
@@ -420,7 +423,8 @@ agent, to serve and protect the site; see
 [Vercel's privacy notice](https://vercel.com/legal/privacy-notice). The site sets no cookies, has no
 analytics and loads nothing from third parties (its fonts are served from the site itself). The only
 thing it stores is your choice of day or night theme, in your own browser (`localStorage`), and that
-is never sent anywhere. The mailing-list form on the home page does not send what you type anywhere.
+is never sent anywhere. The mailing-list form on the home page sends nothing itself: it opens your own mail app with a
+message to contact@vora.sh, which you then choose to send; §12 covers emails sent to that address.
 
 ---
 
