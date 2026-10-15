@@ -5,7 +5,7 @@ import { useCopy, useInView, useReducedMotion, useReveal, useTypewriter } from "
 import { useTheme, type Theme } from "../shared/theme";
 import {
   AGENT_PROMPT, ATTACKS, AUDIT_LOG, BENCH, CODE, CODE_TABS, FAQ, LIMITS, LINKS,
-  PROBE, STATS, STATUS, USE_CASES,
+  MAIL_LINKS, PROBE, STATS, STATUS, USE_CASES,
 } from "../shared/content";
 import { GlassCube } from "./GlassCube";
 import { Instruments } from "./Instruments";
@@ -820,11 +820,16 @@ function Final({ reduced }: { reduced: boolean }) {
         <h2 className="cr-final__h" id="cr-final-title">Step inside.</h2>
         <p className="cr-sub">
           Release notes, early builds and the occasional escape-attempt write-up. Nothing else leaves the room.
+          Joining opens your own mail app with a message to {MAIL_LINKS.contactAddress}.
         </p>
         <form
           className="cr-form"
           onSubmit={(e) => {
+            // No backend: the visitor's own mail app sends the request to the contact address.
             e.preventDefault();
+            const subject = encodeURIComponent("Join the Vora list");
+            const body = encodeURIComponent(`Please add ${email} to the Vora list.`);
+            window.location.href = `${MAIL_LINKS.contact}?subject=${subject}&body=${body}`;
             setSent(true);
           }}
         >
@@ -837,13 +842,12 @@ function Final({ reduced }: { reduced: boolean }) {
             placeholder="you@company.dev"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            disabled={sent}
           />
-          <button className="cr-btn cr-btn--primary" type="submit" disabled={sent}>
-            {sent ? "You're on the list ✓" : "Join the list"}
+          <button className="cr-btn cr-btn--primary" type="submit">
+            {sent ? "Opened in your mail app ✓" : "Join the list"}
           </button>
         </form>
-        <p className="cr-sr" aria-live="polite">{sent ? "You're on the list." : ""}</p>
+        <p className="cr-sr" aria-live="polite">{sent ? `Your mail app should open with a message to ${MAIL_LINKS.contactAddress}. Send it to join the list.` : ""}</p>
         <a className="cr-tlink" href={LINKS.github}>
           <GitHubIcon /> Or read the source on GitHub <Arrow />
         </a>

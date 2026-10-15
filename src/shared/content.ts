@@ -573,7 +573,7 @@ export const LEGAL_PAGE = {
       // AGENTS.md: no third-party requests; theme key in src/shared/theme.ts; the waitlist
       // form has no backend. Revisit this section if analytics, cookies or a form backend appear.
       paragraphs: [
-        "This site sets no cookies, runs no analytics and loads nothing from other sites. Your choice of day or night theme is kept only in your own browser. The waitlist form on the home page sends nothing anywhere.",
+        "This site sets no cookies, runs no analytics and loads nothing from other sites. Your choice of day or night theme is kept only in your own browser. The mailing-list form on the home page sends nothing itself: it opens your own mail app with a message to contact@vora.sh, which you then choose to send.",
         "Like any web host, Vercel may keep technical logs of requests to this site; see Vercel's privacy notice.",
       ],
       links: [{ href: "https://vercel.com/legal/privacy-notice", text: "Vercel's privacy notice" }],
