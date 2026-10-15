@@ -7,17 +7,19 @@ Landing page for Vora (vora.sh): a single-page Vite 6 + React 18 site, plain CSS
 - Package manager is **yarn classic** (`yarn.lock`). If `yarn` isn't installed, use `npx yarn@1 …`; don't create a `package-lock.json`.
 - `yarn dev` serves on port 3000 and opens a browser (`vite.config.ts`). If 3000 is taken: `npx vite --port 5317`.
 - `yarn build` writes to `build/` (not `dist/`).
+- `yarn build` fails while Vora Mail's privacy policy (`src/mail/privacy-policy.md`) still has `[OWNER: …]`, `[LEGAL: …]` or `[PLACEHOLDER]` markers, so a draft policy can never be published. `MAIL_PRIVACY_DRAFT=1 yarn build` builds anyway and highlights them, for local review only. `yarn dev` errors on `/mail/privacy` for the same reason; run `MAIL_PRIVACY_DRAFT=1 yarn dev`. The policy lives in vorash/vora-mail; refresh the copy with `scripts/sync-mail-privacy.sh [ref]`, never edit it here.
 - There is no test suite, linter or `tsconfig`. Vite's SWC plugin does **not** type-check, so type errors won't fail the build. Verify with `yarn build` plus a look in a browser at desktop and ~390px width, in both themes.
 
 ## Layout
 
 - `src/App.tsx` renders `src/landing/CleanRoom.tsx`, the whole page. `GlassCube.tsx` is the hero, `Instruments.tsx` the feature panels.
 - `src/shared/content.ts` holds **every fact, number and code sample** on the page.
+- `mail/` and `src/mail/` are the Vora Mail page (`/mail/`) and its privacy policy (`/mail/privacy`, rendered at build time by `tools/privacy-policy.ts`). `legal/` and `src/legal/` are the site's legal notice (`/legal`). `src/shared/DocPage.tsx` is the long-form layout both use. Google's OAuth verification points at `/mail/`, `/mail/privacy` and `/legal` on www.vora.sh: never move them.
 - The other design directions (Event Horizon, Containment Protocol, brand board) live only on the `design/landing-explorations` branch.
 
 ## Content rules
 
-- Every claim must trace to the sibling repos `../vora` (README, `docs/adr/`, `docs/benchmarks/`) and `../vora-probe`. Never invent customers, uptime, regions or benchmarks. The old site did, and that was the reason for the rewrite.
+- Every claim must trace to the sibling repos `../vora` (README, `docs/adr/`, `docs/benchmarks/`), `../vora-probe` and, for Vora Mail, `../vora-mail` (README, `docs/`). Vora Mail's media comes from `../vora-mail-promotional/videos/hero/`, copied under the same names. Never invent customers, uptime, regions or benchmarks. The old site did, and that was the reason for the rewrite.
 - Vora is v0.7, a proof of concept. Keep the stated limits and FAQ honest.
 - Avoid competitors' taglines: "a computer for every agent", "code you didn't write". Don't lead with cold-start time (1.1s loses to rivals); lead with exec latency, density and "no KVM, no Kubernetes".
 - The waitlist form has no backend yet; it only shows a local success state.
@@ -29,7 +31,7 @@ Landing page for Vora (vora.sh): a single-page Vite 6 + React 18 site, plain CSS
   - Translucent colours use channel tokens: `rgb(var(--ink-rgb) / 0.07)`, `rgb(var(--glass) / 0.8)`, `rgb(var(--bg-rgb) / …)`, `rgb(var(--cool) / …)`.
   - Shadows: `rgb(var(--shade) / calc(a * var(--shade-a)))`. White highlights: `rgb(255 255 255 / calc(a * var(--hi-a)))`.
   - Text on accent or colour fills uses `var(--on-accent)`; text on ink fills uses `var(--on-ink)`. Night accent `#7d98ff` is too light for white text.
-- The theme storage key `vora-cr-theme` is duplicated in `CleanRoom.tsx` and the inline no-flash script in `index.html`; change both together.
+- The theme storage key `vora-cr-theme` is in `src/shared/theme.ts` and in the inline no-flash script of every HTML entry (`index.html`, `probe/`, `mail/`, `mail/privacy/`, `legal/`); change them together.
 - Fonts (Switzer, Fragment Mono) are self-hosted in `src/landing/fonts/` via `fonts.css`. Don't add font CDNs; the page makes no third-party requests.
 - Keep `prefers-reduced-motion` support when adding animation (`useReducedMotion` in `src/shared/hooks.ts`, plus CSS).
 
