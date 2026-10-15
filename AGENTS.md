@@ -22,7 +22,7 @@ Landing page for Vora (vora.sh): a single-page Vite 6 + React 18 site, plain CSS
 - Every claim must trace to the sibling repos `../vora` (README, `docs/adr/`, `docs/benchmarks/`), `../vora-probe` and, for Vora Mail, `../vora-mail` (README, `docs/`). Vora Mail's media comes from `../vora-mail-promotional/videos/hero/`, copied under the same names. Never invent customers, uptime, regions or benchmarks. The old site did, and that was the reason for the rewrite.
 - Vora is v0.7, a proof of concept. Keep the stated limits and FAQ honest.
 - Avoid competitors' taglines: "a computer for every agent", "code you didn't write". Don't lead with cold-start time (1.1s loses to rivals); lead with exec latency, density and "no KVM, no Kubernetes".
-- The waitlist form has no backend yet; it only shows a local success state.
+- The waitlist form has no backend: it opens the visitor's mail app with a message to contact@vora.sh (`mailto:`). Vora Mail's privacy policy §13 and `/legal` describe it, so change them together.
 
 ## Styling and themes
 
