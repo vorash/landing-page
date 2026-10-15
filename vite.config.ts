@@ -2,9 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 import { mailPrivacy } from './tools/privacy-policy';
+import { dirIndex } from './tools/dir-index';
 
 export default defineConfig({
-  plugins: [react(), mailPrivacy(path.resolve(__dirname, 'src/mail/privacy-policy.md'))],
+  plugins: [react(), dirIndex(), mailPrivacy(path.resolve(__dirname, 'src/mail/privacy-policy.md'))],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

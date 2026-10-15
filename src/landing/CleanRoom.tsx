@@ -78,6 +78,7 @@ function Nav({ theme, onToggle }: { theme: Theme; onToggle: (o?: { x: number; y:
           <a href="#airlock">Security</a>
           <a href="#build">Build</a>
           <a href="/probe/">Probe</a>
+          <a href="/mail/">Mail</a>
           <a href={LINKS.github}>GitHub</a>
         </div>
         <div className="cr-nav__right">
