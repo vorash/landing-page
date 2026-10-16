@@ -1,7 +1,7 @@
-<!-- Copied from vorash/vora-mail docs/privacy-policy.md at c6a301e (origin/main) by scripts/sync-mail-privacy.sh. Edit it there, not here. -->
+<!-- Copied from vorash/vora-mail docs/privacy-policy.md at a93106c (origin/main) by scripts/sync-mail-privacy.sh. Edit it there, not here. -->
 # Vora Mail — Privacy Policy
 
-Effective date: 15 October 2026.
+Effective date: 16 October 2026.
 
 ## 1. Who this is about
 
@@ -71,6 +71,13 @@ Before an account is added, Vora can look up your provider's server settings. It
 `autoconfig.<your address's domain>` and `autoconfig.thunderbird.net` over HTTPS. Only the domain
 (the part after the `@`) is part of that, never the part before it. The form says so before it
 asks, and you can skip the lookup.
+
+### 3.3 Searching
+
+Search runs on your computer, over the mail stored there. While some of an account's older mail
+is not on your computer yet, what you type in the search field is also sent to that account's own
+mail provider (the Gmail API, or your IMAP server), and only to it, so older matching mail can be
+found; what is found is stored on your computer like the rest of your mail.
 
 ## 4. Where your data is kept
 
@@ -333,9 +340,10 @@ message in any case.
 
 **Withdraw consent.** Turning a feature off stops all further transfers. Turning it on again asks
 you to confirm again. What a provider already received is held under its own terms (§6.3, §6.4);
-to have it deleted, ask the provider. Settings cannot yet forget the one-time confirmation of
-"Use the message I'm replying to" once you have given it; turning the writing assistant off stops
-all further requests.
+to have it deleted, ask the provider. Once you have given the one-time confirmation of "Use the
+message I'm replying to", Settings → Composing → Writing assistant shows a **Forget** action on a
+"Reply context confirmed" row. It removes the confirmation from your configuration, so the next
+tick of the box asks you again and nothing is sent before you answer.
 
 **Remove an account.** Settings → Accounts → remove. Vora asks Google to revoke its access (if
 that request fails, for example because you are offline, the account is still removed), deletes the
