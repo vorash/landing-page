@@ -333,6 +333,19 @@
   text-decoration: none;
 }
 
+/* Vora Mail's own pages: its app icon and a two-word name, so a little smaller and looser. */
+.cr .cr-logo--mail {
+  gap: 10px;
+  font-size: 19px;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.cr .cr-mark-mail {
+  display: block;
+  flex: none;
+}
+
 .cr .cr-nav__links {
   display: flex;
   align-items: center;

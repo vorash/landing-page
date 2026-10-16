@@ -398,6 +398,9 @@ export const LIMITS = [
 // means vorash/landing-page#4 (2026-10-15). Google's OAuth review reads this
 // page, so keep the Gmail and AI wording exact; it follows docs/security.md §9.
 export const MAIL_LINKS = {
+  // Vora Mail's home. When it moves to a domain of its own, this and the canonical URLs in
+  // mail/index.html and mail/privacy/index.html are what change.
+  home: "/mail/",
   privacy: "/mail/privacy",
   legal: "/legal",
   // Private during the closed beta (vora-mail README.md "Status"); the owner accepts a 404 (#4).
