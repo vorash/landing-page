@@ -424,9 +424,11 @@ export const MAIL_PAGE = {
   video: {
     alt: "A 20-second loop of Vora Mail with three accounts in All Inboxes, driven only from the keyboard: j moves to the next conversation, s stars it, e archives one and opens a conversation from another account, the keys 1 to 4 switch between the Smart Inbox tabs, Ctrl+2 shows one account's inbox and Ctrl+0 returns to All Inboxes, Ctrl+K opens the command palette and z undoes the archive.",
   },
-  // Stills from the same take (vora-mail-promotional/videos/hero/stills/).
+  // Stills of the same invented mailbox (vora-mail-promotional/videos/hero/stills/ and videos/stills-landing/).
   stills: {
     allInboxes: "Vora Mail's All Inboxes: conversations from three accounts in one list, each row marked with its account's colour, and the accounts as tiles in the side rail.",
+    search: "Vora Mail's search field after typing from:el in All Inboxes. A panel under the field suggests Elena Park from the contacts, and the one conversation that matches is open on the right.",
+    write: "Vora Mail's composer, replying to Elena Park's \"Q4 roadmap review: final draft\": two short paragraphs typed by Maya, her signature, and the quoted message below. The footer shows Attach, the Plain text switch, \"Saved to Drafts\" and Send.",
   },
   guarantees: [
     // README.md "Privacy and security": "No Vora server", "no telemetry".
@@ -461,7 +463,6 @@ export const MAIL_PAGE = {
       // 0.2.0-beta.1: the whole history downloaded in the background (#390), and the server
       // asked too while it downloads or when an account keeps less (#391).
       text: "Press / and search the mail stored on your computer, offline too. Vora Mail downloads your whole history in the background. Until it has, or if you keep only the last year or 30 days, a search also asks your mail provider for older mail.",
-      operators: ["from:", "to:", "subject:", "label:", "in:", "after:", "before:", "is:unread", "is:starred", "has:attachment"],
     },
     {
       id: "writing",

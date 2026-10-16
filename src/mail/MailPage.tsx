@@ -195,14 +195,11 @@ function FeatureVisual({ id, theme }: { id: string; theme: Theme }) {
     {MAIL_PAGE.features[1].tabs!.map((t, i) => <span key={t} className={i === 0 ? "is-on" : ""}><kbd>{i + 1}</kbd>{t}</span>)}
     <p>Local rules · no AI</p>
   </div>;
-  if (id === "search") return <div className="cm-vis cm-vis--search" aria-hidden="true">
-    <div className="cm-vis__query"><kbd>/</kbd><span>from:elena has:attachment after:2026-09-01</span></div>
-    <div className="cm-vis__ops">{MAIL_PAGE.features[2].operators!.map((o) => <code key={o}>{o}</code>)}</div>
+  if (id === "search") return <div className="cm-vis cm-vis--still">
+    <img src={`/mail/${still}-search.webp`} alt={MAIL_PAGE.stills.search} loading="lazy" width={1600} height={1000} />
   </div>;
-  if (id === "writing") return <div className="cm-vis cm-vis--compose" aria-hidden="true">
-    <div className="cm-vis__bar"><b>B</b><i>I</i><u>U</u><span>• List</span><span>Link</span><span>❝ Quote</span><span className="cm-vis__mode">Plain text</span></div>
-    <div className="cm-vis__lines"><i /><i /><i /><i /></div>
-    <div className="cm-vis__status"><span><span className="cm-dot cm-dot--b" />Draft saved here and on the server</span><span>Outbox → Sent</span></div>
+  if (id === "writing") return <div className="cm-vis cm-vis--still">
+    <img src={`/mail/${still}-write.webp`} alt={MAIL_PAGE.stills.write} loading="lazy" width={1600} height={1000} />
   </div>;
   return <div className="cm-vis cm-vis--desktop cm-vis--still" aria-hidden="true">
     <img src={`/mail/${still}-palette.webp`} alt="" loading="lazy" width={1600} height={1000} />
