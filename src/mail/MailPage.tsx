@@ -66,7 +66,7 @@ export default function MailPage() {
               <p className="cp-lede">{MAIL_PAGE.intro}</p>
               <div className="cr-ctas">
                 <a className="cr-btn cr-btn--primary" href="#data">How it handles your data <Arrow /></a>
-                <a className="cr-btn cr-btn--glass" href={`${MAIL_LINKS.contact}?subject=Vora%20Mail%20alpha`}>Ask about the alpha</a>
+                <a className="cr-btn cr-btn--glass" href={`${MAIL_LINKS.contact}?subject=Vora%20Mail%20beta`}>Ask about the beta</a>
               </div>
               <p className="cr-fine">{MAIL_PAGE.traits.map((t) => <span key={t}>{t}</span>)}</p>
             </div>
@@ -129,8 +129,8 @@ export default function MailPage() {
         <section className="cr-sec cm-faq" id="faq" aria-labelledby="cm-faq-title">
           <div className="cr-wrap cm-faq__grid">
             <div data-reveal>
-              <p className="cp-overline">STATUS / ALPHA 0.1.0-alpha.2</p>
-              <h2 className="cr-h2" id="cm-faq-title">An honest alpha. <span className="cr-soft">Questions, answered.</span></h2>
+              <p className="cp-overline">STATUS / BETA 0.2.0-beta.1</p>
+              <h2 className="cr-h2" id="cm-faq-title">An honest beta. <span className="cr-soft">Questions, answered.</span></h2>
               <p className="cr-sub">Write to <a className="cr-tlink" href={MAIL_LINKS.contact}>{MAIL_LINKS.contactAddress}</a> for anything else.</p>
             </div>
             <Faq />
