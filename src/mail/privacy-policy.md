@@ -1,20 +1,21 @@
-<!-- Copied from vorash/vora-mail docs/privacy-policy.md at a93106c (origin/main) by scripts/sync-mail-privacy.sh. Edit it there, not here. -->
-# Vora Mail — Privacy Policy
+<!-- Copied from vorash/vora-mail docs/privacy-policy.md at 25d6af5 (25d6af5) by scripts/sync-mail-privacy.sh. Edit it there, not here. -->
+# Vora Mail privacy policy
 
 Effective date: 16 October 2026.
 
 ## 1. Who this is about
 
 Vora Mail (called "Vora" in the rest of this policy) is a free, open-source, non-commercial desktop
-email client for Linux, published by Iulian Safta, a private individual living in France ("we", "the publisher"). Its source code (<https://github.com/vorash/vora-mail>) is open and
-licensed under either the MIT licence (<https://opensource.org/license/mit>) or the Apache License
-2.0 (<https://www.apache.org/licenses/LICENSE-2.0>). It is
-not sold, and it has no advertising and no paid plan. This policy covers
-the Vora application on your computer: the window (`vora`), its background service (`vorad`) and
-its command line tool (`vora-cli`). It does not cover your mail provider, Google, Anthropic or
-TypeSafe: each has its own policy, linked below.
+email client for Linux, published by Iulian Safta, a private individual living in France ("we", "the
+publisher"). Its source code (<https://github.com/vorash/vora-mail>) is open and licensed under
+either the MIT licence (<https://opensource.org/license/mit>) or the Apache License 2.0
+(<https://www.apache.org/licenses/LICENSE-2.0>). It is not sold, and it has no advertising and no
+paid plan. This policy covers the Vora application on your computer: the window (`vora`), its
+background service (`vorad`) and its command line tool (`vora-cli`). It does not cover your mail
+provider, Google, Anthropic or TypeSafe: each has its own policy, linked below.
 
-Contact for privacy questions: contact@vora.sh. Who is responsible for what, and your rights, are in §12; the website is in §13.
+Contact for privacy questions: contact@vora.sh. Who is responsible for what, and your rights, are
+in §12; the website is in §13.
 
 ## 2. The short version
 
@@ -90,9 +91,9 @@ Everything below is on your computer, under your user account.
 | Settings, including whether you turned the AI features on and when | `~/.config/vora/config.toml` | Your user's file permissions. No mail in it |
 | Sign-in credentials (Google refresh token, IMAP password), the API keys for the AI features, and the database key | Your system keyring (Secret Service), items with `application = vora` | Whatever your keyring provides |
 
-**The key.** When Vora first starts it makes a random 256-bit key on your computer and stores it only
-in your keyring. Nothing is derived from a password, and the key is never in a log, a setting or on
-a command line. Whoever can use your keyring while you are logged in can read your mail: the
+**The key.** When Vora first starts it makes a random 256-bit key on your computer and stores it
+only in your keyring. Nothing is derived from a password, and the key is never in a log, a setting
+or on a command line. Whoever can use your keyring while you are logged in can read your mail: the
 encryption protects a stolen or lost disk, a backup, a copy of the file, and any program that cannot
 reach your keyring. It does not protect memory, swap or hibernation images.
 
@@ -172,13 +173,13 @@ any server of ours. The request goes over HTTPS to Anthropic's API (`api.anthrop
 - For *write from notes* only, also what you typed in the composer: the **display names** of the
   people in To, and the Subject. A recipient with no display name adds nothing, and a name that is
   an email address is left out.
-- **Only if you tick "Use the message I'm replying to" for that request**, and only in a reply or
-  a forward, and never for a message of a Gmail account signed in through Vora's built-in Google
-  client (the box is not offered there): the display name of the sender of the message you are answering (never their
-  address), its subject, and the text of its latest message, with the quoted earlier messages
-  removed and cut to 4,000 characters. This applies to *write from notes* and to the rewrite
-  actions. **Proofreading never sends it**, whatever the box says, because proofreading checks
-  your own words and its request has no place for it.
+- **Only if you tick "Use the message I'm replying to" for that request**, and only in a reply or a
+  forward, and never for a message of a Gmail account signed in through Vora's built-in Google
+  client (the box is not offered there): the display name of the sender of the message you are
+  answering (never their address), its subject, and the text of its latest message, with the quoted
+  earlier messages removed and cut to 4,000 characters. This applies to *write from notes* and to
+  the rewrite actions. **Proofreading never sends it**, whatever the box says, because proofreading
+  checks your own words and its request has no place for it.
 - The first time you tick that box, Vora asks you to confirm, naming the sender and the subject
   that would be sent. Until you have confirmed, no received message is sent even if a setting says
   the box should start ticked.
@@ -222,12 +223,12 @@ over HTTPS to TypeSafe (`api.typesafe.ai`, `POST /v1/systemone`) with your TypeS
 - The text of the latest message in the inbox, with quoted earlier messages removed, cut to
   2,000 characters.
 
-**Which mail.** Never mail of a Gmail account signed in through Vora's built-in Google client: it
-is sorted by the local rules only, and results the model gave it earlier go back to the rules. For
-the other accounts, only inbox conversations whose latest message arrived after you turned the
-feature on. Conversations from a sender that you gave a rule, and conversations you sorted by hand, are not
-sent. Older mail is sent only if you choose "Classify older mail" in Settings, which shows how
-many conversations that is and asks you first.
+**Which mail.** Never mail of a Gmail account signed in through Vora's built-in Google client: it is
+sorted by the local rules only, and results the model gave it earlier go back to the rules. For the
+other accounts, only inbox conversations whose latest message arrived after you turned the feature
+on. Conversations from a sender that you gave a rule, and conversations you sorted by hand, are not
+sent. Older mail is sent only if you choose "Classify older mail" in Settings, which shows how many
+conversations that is and asks you first.
 
 **What is never sent.** Attachments, recipients, other messages, other accounts. Your corrections
 are not sent.
@@ -293,13 +294,15 @@ TypeSafe's own words, read on 2026-10-15. **To be read again before publishing a
 
 ## 7. Google user data: Limited Use
 
-Vora Mail's use and transfer of information received from Google APIs will adhere to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
+Vora Mail's use and transfer of information received from Google APIs will adhere to the [Google API
+Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy),
+including the Limited Use requirements.
 
 The Limited Use requirements are at
 <https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes>.
-Google's additional policy for Gmail data, the
-[Google Workspace user data and developer policy](https://developers.google.com/workspace/workspace-api-user-data-developer-policy),
-applies as well.
+Google's additional policy for Gmail data, the [Google Workspace user data and developer
+policy](https://developers.google.com/workspace/workspace-api-user-data-developer-policy), applies
+as well.
 
 In practice, for Gmail data (the content and metadata Vora receives through the Gmail API):
 
@@ -315,24 +318,25 @@ In practice, for Gmail data (the content and metadata Vora receives through the 
   feature you turned on, with your consent: your confirmation when you turned the feature on, for
   the reply context of the writing assistant a second confirmation and a tick for each request,
   and for Check as you type its own confirmation. The text you write yourself in the composer can
-  go to Anthropic from any account when you ask for the writing assistant. Both providers state that they
-  do not train their models on this data (§6.3 and §6.4). We do not sell it or give it to
+  go to Anthropic from any account when you ask for the writing assistant. Both providers state
+  that they do not train their models on this data (§6.3 and §6.4). We do not sell it or give it to
   advertisers, data brokers or resellers.
 - **People reading it.** No person at the publisher can read it, because it never reaches us.
   Anthropic and TypeSafe may have their own review for abuse; see their terms in §6.3 and §6.4.
 - **Security.** Mail is transferred only over TLS. It is stored on your computer as §4 says.
 
-This policy is the one Google's verification of Vora Mail will refer to. If we change how Vora uses Google user
-data, we will tell you in the application and ask you again before we use it in the new way.
+This policy is the one Google's verification of Vora Mail will refer to. If we change how Vora uses
+Google user data, we will tell you in the application and ask you again before we use it in the new
+way.
 
 ## 8. Your controls
 
-**Turn an AI feature off.** Settings → Composing → Writing assistant, or Settings → Smart Inbox:
-set the provider to **Off**. This needs no confirmation. The assistant makes no new request after
-that (closing the composer cancels one in progress), and triage sends nothing from its next call.
-Removing the API key from Settings also turns the feature off. If the provider rejects your key, Vora turns
-the feature off and tells you. **Check as you type** has its own switch (Settings → Composing →
-Writing assistant) and also stops when the assistant is turned off.
+**Turn an AI feature off.** Settings → Composing → Writing assistant, or Settings → Smart Inbox: set
+the provider to **Off**. This needs no confirmation. The assistant makes no new request after that
+(closing the composer cancels one in progress), and triage sends nothing from its next call.
+Removing the API key from Settings also turns the feature off. If the provider rejects your key,
+Vora turns the feature off and tells you. **Check as you type** has its own switch (Settings →
+Composing → Writing assistant) and also stops when the assistant is turned off.
 
 **Decide per request.** The "Use the message I'm replying to" box is per request. You can leave it
 unticked, and Settings has a switch for whether it starts ticked. Proofreading never sends the
@@ -349,13 +353,14 @@ tick of the box asks you again and nothing is sent before you answer.
 that request fails, for example because you are offline, the account is still removed), deletes the
 sign-in credential from your keyring, deletes the account's mail from the database, and deletes the
 account's downloaded attachments. Deleted mail may remain, still encrypted, in unused space inside
-the database file until it is reused; Vora does not currently compact the file. You can also remove Vora's access from
-your Google Account at <https://myaccount.google.com/permissions>.
+the database file until it is reused; Vora does not currently compact the file. You can also
+remove Vora's access from your Google Account at <https://myaccount.google.com/permissions>.
 
 **Delete everything Vora stored.** Quit Vora, then delete `~/.local/share/vora/` (mail and
 attachments) and `~/.config/vora/` (settings), and delete the keyring items with
-`application = vora`, which include the database key (for example with your keyring's manager). Copies you made yourself when
-saving an attachment, and copies another application kept (§4), are outside Vora's folders.
+`application = vora`, which include the database key (for example with your keyring's manager).
+Copies you made yourself when saving an attachment, and copies another application kept (§4), are
+outside Vora's folders.
 
 **Remote images.** Settings → Privacy: ask (default), never, or always.
 
@@ -363,12 +368,11 @@ saving an attachment, and copies another application kept (§4), are outside Vor
 
 Mail is exchanged with providers only over TLS, with certificates checked. Message HTML is
 sanitised and shown in a web view that runs no scripts and loads remote content only if you allow
-it. Credentials and the database key are in the
-system keyring. The mail database and the downloaded attachments are encrypted at rest and readable
-only by you. Received mail given
-to an AI service is wrapped as untrusted data, and the assistant has no tools: a result can at worst
-be a bad suggestion that you see and reject. The full technical description is in the project's security document
-(<https://github.com/vorash/vora-mail/blob/main/docs/security.md>).
+it. Credentials and the database key are in the system keyring. The mail database and the
+downloaded attachments are encrypted at rest and readable only by you. Received mail given to an
+AI service is wrapped as untrusted data, and the assistant has no tools: a result can at worst be a
+bad suggestion that you see and reject. The full technical description is in the project's
+security document (<https://github.com/vorash/vora-mail/blob/main/docs/security.md>).
 
 ## 10. Children
 
@@ -376,12 +380,11 @@ Vora Mail is not intended for anyone under 15.
 
 ## 11. Changes to this policy
 
-Changes are announced on this page, with a new effective date. The dated history of this policy
-is kept in the project's public source repository (<https://github.com/vorash/vora-mail>). If a
-change affects what
-the writing assistant sends to a third party, the application asks for your consent again before
-the new behaviour starts. (Built for the writing assistant, its reply box and Check as you type; not
-yet for Smart Inbox AI triage, whose confirmation does not carry a version.)
+Changes are announced on this page, with a new effective date. The dated history of this policy is
+kept in the project's public source repository (<https://github.com/vorash/vora-mail>). If a change
+affects what the writing assistant sends to a third party, the application asks for your consent
+again before the new behaviour starts. (Built for the writing assistant, its reply box and Check as
+you type; not yet for Smart Inbox AI triage, whose confirmation does not carry a version.)
 
 ## 12. Who is responsible, your rights, contact
 
@@ -394,11 +397,11 @@ the GDPR) only of the little it processes itself: the emails you send to contact
 your address, your name if you give it, and what you write. It uses them to answer you. The legal
 basis is its legitimate interest in answering messages sent to it (Article 6(1)(f) GDPR). They are
 kept as long as needed to answer, and at most 2 years. If you write to join the list (the form on
-the home page prepares that email), your address is also used to send you news about Vora and its projects, including Vora Mail,
-on the basis of your consent (Article 6(1)(a) GDPR), and kept until you ask to leave the list,
-which you can do at any time by writing to the same address. The address contact@vora.sh is received by
-Cloudflare (Cloudflare Email Routing) and forwarded to a Gmail mailbox (Google); both process the
-emails on the publisher's behalf.
+the home page prepares that email), your address is also used to send you news about Vora and its
+projects, including Vora Mail, on the basis of your consent (Article 6(1)(a) GDPR), and kept until
+you ask to leave the list, which you can do at any time by writing to the same address. The address
+contact@vora.sh is received by Cloudflare (Cloudflare Email Routing) and forwarded to a Gmail
+mailbox (Google); both process the emails on the publisher's behalf.
 
 **What Vora sends from your computer to others.** The data that Vora sends to Google, to your mail
 provider, to Anthropic or to TypeSafe goes from your computer, with your accounts and your keys, and
@@ -425,14 +428,14 @@ courts of that country.
 
 ## 13. This website (www.vora.sh)
 
-The website where this policy is published is separate from the application. It is hosted by
-Vercel (<https://vercel.com>), which processes request logs, such as the IP address and the user
-agent, to serve and protect the site; see
-[Vercel's privacy notice](https://vercel.com/legal/privacy-notice). The site sets no cookies, has no
-analytics and loads nothing from third parties (its fonts are served from the site itself). The only
-thing it stores is your choice of day or night theme, in your own browser (`localStorage`), and that
-is never sent anywhere. The mailing-list form on the home page sends nothing itself: it opens your own mail app with a
-message to contact@vora.sh, which you then choose to send; §12 covers emails sent to that address.
+The website where this policy is published is separate from the application. It is hosted by Vercel
+(<https://vercel.com>), which processes request logs, such as the IP address and the user agent, to
+serve and protect the site; see [Vercel's privacy notice](https://vercel.com/legal/privacy-notice).
+The site sets no cookies, has no analytics and loads nothing from third parties (its fonts are
+served from the site itself). The only thing it stores is your choice of day or night theme, in your
+own browser (`localStorage`), and that is never sent anywhere. The mailing-list form on the home
+page sends nothing itself: it opens your own mail app with a message to contact@vora.sh, which you
+then choose to send; §12 covers emails sent to that address.
 
 ---
 

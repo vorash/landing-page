@@ -400,7 +400,7 @@ export const LIMITS = [
 export const MAIL_LINKS = {
   privacy: "/mail/privacy",
   legal: "/legal",
-  // Private until the first release; the owner accepts a 404 until then (#4).
+  // Private during the closed beta (vora-mail README.md "Status"); the owner accepts a 404 (#4).
   source: "https://github.com/vorash/vora-mail",
   contact: "mailto:contact@vora.sh",
   contactAddress: "contact@vora.sh",
@@ -409,8 +409,8 @@ export const MAIL_LINKS = {
 };
 
 export const MAIL_PAGE = {
-  // README.md "Status"; Linux and open source: README.md first lines and "License".
-  status: ["Alpha", "Linux", "Open source"],
+  // README.md "Status" (closed beta, 0.2.0-beta.1); Linux and open source: README.md first lines and "License".
+  status: ["Beta", "Linux", "Open source"],
   headline: ["Your mail,", "on your computer."],
   // README.md first two paragraphs, docs/security.md §5.1.
   intro: "A fast, keyboard-first mail client for Linux. No server in between, encrypted on disk.",
@@ -453,9 +453,11 @@ export const MAIL_PAGE = {
     {
       id: "search",
       label: "Search",
-      title: ["Search that never", "leaves the machine."],
-      // README.md "Reading and triage": local search from / and its operators.
-      text: "Press / and search the mail stored on your computer, offline too.",
+      title: ["Your whole history,", "searched on your computer."],
+      // README.md "Reading and triage": local search from / and its operators. CHANGELOG.md
+      // 0.2.0-beta.1: the whole history downloaded in the background (#390), and the server
+      // asked too while it downloads or when an account keeps less (#391).
+      text: "Press / and search the mail stored on your computer, offline too. Vora Mail downloads your whole history in the background. Until it has, or if you keep only the last year or 30 days, a search also asks your mail provider for older mail.",
       operators: ["from:", "to:", "subject:", "label:", "in:", "after:", "before:", "is:unread", "is:starred", "has:attachment"],
     },
     {
@@ -512,8 +514,8 @@ export const MAIL_PAGE = {
   faq: [
     {
       q: "Can I download it?",
-      // README.md "Status" and "Install".
-      a: "Not yet. Vora Mail is an alpha, version 0.1.0-alpha.2, and no release has been published. The first releases will be an Arch package and a tarball for other x86_64 distributions.",
+      // README.md "Status" and "Install"; the v0.2.0-beta.1 release on GitHub.
+      a: "Vora Mail is a closed beta, version 0.2.0-beta.1. It comes as an Arch package and as a tarball for other x86_64 distributions, on GitHub. The repository is private for now, so only invited testers can download it.",
     },
     {
       q: "Which Linux distributions does it run on?",
@@ -538,7 +540,7 @@ export const MAIL_PAGE = {
     {
       q: "Is it open source? Does it cost anything?",
       // README.md "License" and "Status" (private repo); owner decision (free, non-commercial).
-      a: "It is free and dual-licensed under MIT or Apache-2.0. Nothing is sold: no paid plan, no ads. The source is on GitHub; the repository is private during the alpha and opens to the public later.",
+      a: "It is free and dual-licensed under MIT or Apache-2.0. Nothing is sold: no paid plan, no ads. The source is on GitHub; the repository is private during the beta and opens to the public later.",
     },
   ],
 };

@@ -26,7 +26,7 @@
 
 ## Vora Mail
 
-A separate product from the Vora runtime: a native GTK4, keyboard-first, local-first mail client for Linux (Arch and Omarchy first; also Ubuntu 24.04, Debian 13, Fedora). Status: alpha 0.1.0-alpha.2, not released yet. Free, MIT or Apache-2.0.
+A separate product from the Vora runtime: a native GTK4, keyboard-first, local-first mail client for Linux (Arch and Omarchy first; also Ubuntu 24.04, Debian 13, Fedora). Status: closed beta 0.2.0-beta.1, released on GitHub for invited testers while the repository is private. Free, MIT or Apache-2.0.
 
 - No Vora server and no telemetry: mail goes between your provider (Gmail API or IMAP/SMTP over TLS) and your computer.
 - Mail database (SQLCipher) and downloaded attachments (XChaCha20-Poly1305) encrypted on disk; the key, passwords and tokens are kept in the system keyring.
