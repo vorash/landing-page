@@ -428,7 +428,7 @@ export const MAIL_PAGE = {
   stills: {
     allInboxes: "Vora Mail's All Inboxes: conversations from three accounts in one list, each row marked with its account's colour, and the accounts as tiles in the side rail.",
     search: "Vora Mail's search field after typing from:el in All Inboxes. A panel under the field suggests Elena Park from the contacts, and the one conversation that matches is open on the right.",
-    write: "Vora Mail's composer, replying to Elena Park's \"Q4 roadmap review: final draft\": two short paragraphs typed by Maya, her signature, and the quoted message below. The footer shows Attach, the Plain text switch, \"Saved to Drafts\" and Send.",
+    write: "Vora Mail's composer, writing a new message to Elena Park with the subject \"Roadmap notes\", in front of the main window. The \"Aa\" format panel is open above the footer, with font, size, text colour, highlight, bold, italic, underline, strikethrough, link, alignment, list and indent tools.",
   },
   guarantees: [
     // README.md "Privacy and security": "No Vora server", "no telemetry".
