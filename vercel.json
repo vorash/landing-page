@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/", "has": [{ "type": "host", "value": "voramail.org" }], "destination": "/mail/index.html" },
+    { "source": "/privacy", "has": [{ "type": "host", "value": "voramail.org" }], "destination": "/mail/privacy/index.html" },
+    { "source": "/legal", "has": [{ "type": "host", "value": "voramail.org" }], "destination": "/legal/index.html" }
+  ]
+}

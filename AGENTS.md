@@ -42,6 +42,10 @@ Landing page for Vora (vora.sh): a single-page Vite 6 + React 18 site, plain CSS
 - `public/og-image.png`, `public/apple-touch-icon.png` and `public/favicon.ico` are copies of kit files. Re-copy them after regenerating. `public/favicon.svg` is hand-written (it has a dark-mode media query).
 - The logo mark in the page is `MarkPrism` in `src/shared/logos.tsx`; keep it in sync with `gen_svg.py` if the geometry changes.
 
+## voramail.org
+
+Vora Mail's own domain, voramail.org, is served by this same Vercel project. `vercel.json` rewrites `/`, `/privacy` and `/legal` on that host to the `/mail/`, `/mail/privacy` and `/legal` pages, and nothing on www.vora.sh changes. `www.voramail.org` redirects to the apex in Vercel's domain settings, not here. Until Google's OAuth records point at voramail.org (vora-mail #421), keep www.vora.sh/mail/ and /mail/privacy answering.
+
 ## Git
 
 - Work on a branch and open a PR against `main`. Commits are signed (already configured) and follow `type(scope): summary`, e.g. `feat(landing): …`, `feat(brand): …`, `chore(landing): …`, with the body explaining why.
