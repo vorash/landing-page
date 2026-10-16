@@ -5,11 +5,11 @@ import { MAIL_LINKS } from "../shared/content";
 import "../shared/base.css";
 
 createRoot(document.getElementById("root")!).render(
-  <DocPage product="mail" productHref="/mail/" eyebrow="Vora Mail · Privacy policy" title="Privacy policy" toc={policy.toc}
+  <DocPage brand="mail" product="mail" productHref="/mail/" eyebrow="Vora Mail · Privacy policy" title="Privacy policy" toc={policy.toc}
     meta={<>
       <span>Effective {policy.effective}</span>
       <span>Questions: <a href={MAIL_LINKS.contact}>{MAIL_LINKS.contactAddress}</a></span>
-      <span><a href="/mail/">About Vora Mail</a></span>
+      <span><a href={MAIL_LINKS.home}>About Vora Mail</a></span>
     </>}>
     <div dangerouslySetInnerHTML={{ __html: policy.html }} />
   </DocPage>,

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { MarkPrism } from "../shared/logos";
+import { MarkMail } from "../shared/logos";
 import { useReducedMotion, useReveal } from "../shared/hooks";
 import { useTheme, type Theme } from "../shared/theme";
 import { MAIL_LINKS, MAIL_PAGE } from "../shared/content";
@@ -29,9 +29,7 @@ export default function MailPage() {
       <a className="cr-skip" href="#mail-main">Skip to content</a>
       <nav className="cr-nav cp-nav" aria-label="Primary">
         <div className="cr-wrap cr-nav__in">
-          <a className="cr-logo" href="/" aria-label="Vora home"><MarkPrism size={26} /><span>vora</span></a>
-          <span className="cp-nav__divider" aria-hidden="true" />
-          <a className="cp-nav__product" href="#top">/ mail</a>
+          <a className="cr-logo cr-logo--mail" href={MAIL_LINKS.home} aria-label="Vora Mail home"><MarkMail size={28} /><span>Vora Mail</span></a>
           <div className="cp-nav__links">
             <a href="#features">Features</a>
             <a href="#data">Your data</a>
@@ -139,13 +137,13 @@ export default function MailPage() {
       </main>
 
       <footer className="cr-foot"><div className="cr-wrap cr-foot__in">
-        <a className="cr-logo" href="/" aria-label="Vora home"><MarkPrism size={20} /><span>vora</span></a>
+        <a className="cr-logo cr-logo--mail" href={MAIL_LINKS.home} aria-label="Vora Mail home"><MarkMail size={22} /><span>Vora Mail</span></a>
         <nav className="cr-foot__links" aria-label="Footer">
-          <a href="/">Vora</a><a href="/probe/">Probe</a><a href="/mail/">Mail</a><a href={MAIL_LINKS.source}>Mail on GitHub</a>
-          <a href={MAIL_LINKS.privacy}>Mail privacy</a><a href={MAIL_LINKS.legal}>Legal notice</a>
+          <a href={MAIL_LINKS.source}>Source on GitHub</a>
+          <a href={MAIL_LINKS.privacy}>Privacy policy</a><a href={MAIL_LINKS.legal}>Legal notice</a>
           <a href={MAIL_LINKS.contact}>{MAIL_LINKS.contactAddress}</a>
         </nav>
-        <p className="cr-foot__legal">MIT or Apache-2.0 · © {new Date().getFullYear()} Vora</p>
+        <p className="cr-foot__legal">MIT or Apache-2.0 · © {new Date().getFullYear()} Vora Mail</p>
       </div></footer>
     </div>
   );

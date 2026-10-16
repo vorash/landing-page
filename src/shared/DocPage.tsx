@@ -1,5 +1,5 @@
 import { useEffect, type ReactNode } from "react";
-import { MarkPrism } from "./logos";
+import { MarkMail, MarkPrism } from "./logos";
 import { useReducedMotion } from "./hooks";
 import { useTheme } from "./theme";
 import { MAIL_LINKS } from "./content";
@@ -11,7 +11,9 @@ import "./doc.css";
 
 // The long-form layout of /mail/privacy and /legal: nav, title block, a table
 // of contents beside the text, and the site footer.
-export function DocPage({ product, productHref, eyebrow, title, meta, toc, children }: {
+export function DocPage({ brand = "vora", product, productHref, eyebrow, title, meta, toc, children }: {
+  // "mail" for Vora Mail's own pages (/mail/privacy): its logo and links, none of vora.sh's.
+  brand?: "vora" | "mail";
   product: string;
   productHref: string;
   eyebrow: string;
@@ -37,9 +39,13 @@ export function DocPage({ product, productHref, eyebrow, title, meta, toc, child
       <a className="cr-skip" href="#doc-main">Skip to content</a>
       <nav className="cr-nav cp-nav" aria-label="Primary">
         <div className="cr-wrap cr-nav__in">
-          <a className="cr-logo" href="/" aria-label="Vora home"><MarkPrism size={26} /><span>vora</span></a>
-          <span className="cp-nav__divider" aria-hidden="true" />
-          <a className="cp-nav__product" href={productHref}>/ {product}</a>
+          {brand === "mail"
+            ? <a className="cr-logo cr-logo--mail" href={MAIL_LINKS.home} aria-label="Vora Mail home"><MarkMail size={28} /><span>Vora Mail</span></a>
+            : <>
+              <a className="cr-logo" href="/" aria-label="Vora home"><MarkPrism size={26} /><span>vora</span></a>
+              <span className="cp-nav__divider" aria-hidden="true" />
+              <a className="cp-nav__product" href={productHref}>/ {product}</a>
+            </>}
           <div className="cr-nav__right">
             <button type="button" className={`cr-lights ${theme === "night" ? "is-night" : ""}`}
               aria-pressed={theme === "night"}
@@ -76,10 +82,14 @@ export function DocPage({ product, productHref, eyebrow, title, meta, toc, child
       </main>
 
       <footer className="cr-foot"><div className="cr-wrap cr-foot__in">
-        <a className="cr-logo" href="/" aria-label="Vora home"><MarkPrism size={20} /><span>vora</span></a>
+        {brand === "mail"
+          ? <a className="cr-logo cr-logo--mail" href={MAIL_LINKS.home} aria-label="Vora Mail home"><MarkMail size={22} /><span>Vora Mail</span></a>
+          : <a className="cr-logo" href="/" aria-label="Vora home"><MarkPrism size={20} /><span>vora</span></a>}
         <nav className="cr-foot__links" aria-label="Footer">
-          <a href="/">Vora</a><a href="/probe/">Probe</a><a href="/mail/">Mail</a>
-          <a href={MAIL_LINKS.privacy}>Mail privacy</a><a href={MAIL_LINKS.legal}>Legal notice</a>
+          {brand === "mail"
+            ? <a href={MAIL_LINKS.home}>Vora Mail</a>
+            : <><a href="/">Vora</a><a href="/probe/">Probe</a><a href="/mail/">Mail</a></>}
+          <a href={MAIL_LINKS.privacy}>{brand === "mail" ? "Privacy policy" : "Mail privacy"}</a><a href={MAIL_LINKS.legal}>Legal notice</a>
           <a href={MAIL_LINKS.contact}>{MAIL_LINKS.contactAddress}</a>
         </nav>
         <p className="cr-foot__legal">© {new Date().getFullYear()} Vora</p>

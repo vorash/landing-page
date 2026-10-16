@@ -41,6 +41,7 @@ Landing page for Vora (vora.sh): a single-page Vite 6 + React 18 site, plain CSS
 - Social cards come from `branding/source/og.html` (append `?night` for the dark card), screenshotted at 1200×630.
 - `public/og-image.png`, `public/apple-touch-icon.png` and `public/favicon.ico` are copies of kit files. Re-copy them after regenerating. `public/favicon.svg` is hand-written (it has a dark-mode media query).
 - The logo mark in the page is `MarkPrism` in `src/shared/logos.tsx`; keep it in sync with `gen_svg.py` if the geometry changes.
+- Vora Mail's pages (`/mail/`, `/mail/privacy`) use Vora Mail's own app icon, `MarkMail`, from `public/mail/vora-mail-icon.svg`. It is a copy of `assets/icons/scalable/apps/dev.vora.Mail.svg` in vorash/vora-mail, and the `-32.png` and `-apple-touch-icon.png` beside it are rendered from it with `rsvg-convert`. Vora Mail will move to a domain of its own: keep its pages free of links into the rest of vora.sh, and route its own links through `MAIL_LINKS`.
 
 ## Git
 
