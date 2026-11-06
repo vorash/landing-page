@@ -1,7 +1,7 @@
 # Vora brand kit
 
-The **Prism** mark is an isometric box whose top face draws the V: the sandbox
-itself. The wordmark is Switzer SemiBold, outlined, so every SVG renders
+The **Prism** mark is an isometric box whose top face draws the V. The box is the
+sandbox itself. The wordmark is Switzer SemiBold, outlined, so every SVG renders
 identically without the font installed.
 
 ## Which file do I need?
@@ -12,12 +12,12 @@ identically without the font installed.
 | The logo on a dark background | `svg/vora-logo-night.svg` |
 | One-colour logo (print, embossing, overlays) | `svg/vora-logo-black.svg` · `svg/vora-logo-white.svg` |
 | Just the mark (avatars, small spaces) | `svg/vora-mark.svg` · `-night` · `-black` · `-white` |
-| The mark at 16–32 px | `svg/vora-mark-small.svg` (heavier strokes) and its colourways |
+| The mark at 16 to 32 px | `svg/vora-mark-small.svg` (heavier strokes) and its colourways |
 | Just the word | `svg/vora-wordmark-black.svg` · `-white` |
-| An app / PWA / avatar icon | `svg/vora-app-icon.svg` · `svg/vora-app-icon-night.svg` |
+| An app, PWA, or avatar icon | `svg/vora-app-icon.svg` · `svg/vora-app-icon-night.svg` |
 | A raster file | `png/` (see below) |
 | A favicon | `favicon.ico` (16, 32, 48) or `svg/vora-mark-small.svg` |
-| A link preview / social card | `social/vora-og.png` · `social/vora-og-night.png` (1200×630) |
+| A link preview or social card | `social/vora-og.png` · `social/vora-og-night.png` (1200×630) |
 
 ### PNG sizes
 
@@ -35,7 +35,7 @@ All PNGs have transparent backgrounds except app icons and social cards.
 | Role | Day | Night |
 | --- | --- | --- |
 | Mark gradient | `#2B59FF` → `#9A6BFF` | `#7D98FF` → `#B99CFF` |
-| Wordmark / ink | `#0D0E12` | `#ECEEF3` |
+| Wordmark and ink | `#0D0E12` | `#ECEEF3` |
 | Background | `#F6F6F3` | `#0A0B0F` |
 | Accent (links, buttons) | `#2B59FF` | `#7D98FF` |
 | Iridescent film (glass edges only, never text) | `#9EE7FF` `#C5B8FF` `#FFC4E6` `#FFF0B3` `#B8FFE0` | same |
@@ -52,14 +52,14 @@ The wordmark is Switzer 600 at −0.05em tracking.
 
 ## Usage
 
-- **Clear space:** keep at least the height of the mark's top face (¼ of the mark's height) empty on every side.
-- **Minimum size:** mark 16 px (use the `-small` files below 32 px); full logo 80 px wide.
+- **Clear space.** Keep at least the height of the mark's top face (¼ of the mark's height) empty on every side.
+- **Minimum size.** Keep the mark at 16 px or larger, and use the `-small` files below 32 px. Keep the full logo at 80 px wide or larger.
 - **Don't** recolour the gradient, stretch or rotate the mark, rearrange the lockup, add effects (shadows, outlines), or set the wordmark in another font.
-- **Don't** put the day logo on dark backgrounds or the night logo on light ones — use the matching version, or the one-colour files.
+- **Don't** put the day logo on dark backgrounds or the night logo on light ones. Use the matching version or the one-colour files.
 
 ## Regenerating
 
-`source/render.sh` rebuilds `svg/`, `png/` and `favicon.ico` from
-`source/gen_svg.py` (needs `python3`, `rsvg-convert`, ImageMagick). The social
-cards come from `source/og.html` (`?night` for the dark card), screenshotted
-at 1200×630.
+`source/render.sh` rebuilds `svg/`, `png/`, and `favicon.ico` from
+`source/gen_svg.py`. It needs `python3`, `rsvg-convert`, and ImageMagick. The
+social cards are screenshots of `source/og.html` at 1200×630. Add `?night` for the
+dark card.
